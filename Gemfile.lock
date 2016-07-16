@@ -40,6 +40,11 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.0.0)
+    autoprefixer-rails (6.3.7)
+      execjs
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
     capybara (2.7.1)
@@ -56,7 +61,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    commonjs (0.2.7)
     concurrent-ruby (1.0.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -83,16 +87,6 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jwt (1.5.4)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (2.7.1)
-      actionpack (>= 4.0)
-      less (~> 2.6.0)
-      sprockets (> 2, < 4)
-      tilt
-    less-rails-bootstrap (3.3.5.0)
-      less-rails (>= 2.6, <= 2.8)
-    libv8 (3.16.14.15)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -161,7 +155,6 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    ref (2.0.0)
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -196,9 +189,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    therubyracer (0.12.2)
-      libv8 (~> 3.16.14.0)
-      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
@@ -226,6 +216,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.3.6)
   byebug
   capybara
   coffee-rails (~> 4.2)
@@ -234,7 +225,6 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.5)
   jquery-rails
-  less-rails-bootstrap
   listen (~> 3.0.5)
   omniauth
   omniauth-github
@@ -244,7 +234,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
-  therubyracer
   tzinfo-data
   uglifier (>= 1.3.0)
   vcr

@@ -15,9 +15,7 @@ gem 'rspec-rails'
 gem 'omniauth'
 gem 'omniauth-github'
 
-gem 'therubyracer'
-gem 'less-rails-bootstrap'
-
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'byebug', platform: :mri
