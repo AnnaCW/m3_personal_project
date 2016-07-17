@@ -15,5 +15,26 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-body { padding-top: 70px;
+body {
+  padding-top: 70px;
+  color: white;
+  background-color: #141145;
+}
+
+.navbar-default {
+  background-color: #060524;
+  border-color: black;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: white; /*BACKGROUND color for active*/
+background-color: #141145;
+}
+
+.site-title {
+  text-align: center;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  font-size: 80px;
 }
