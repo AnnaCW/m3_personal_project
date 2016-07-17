@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
   root 'welcome#index'
 
-   get '/auth/github', as: :github_login
-   get '/auth/github/callback', to: 'sessions#create'
-   delete '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/auth/github', as: :github_login
+  get '/auth/github/callback', to: 'sessions#create'
 
-   resources :users, only: [:show]
+  get '/auth/spotify', as: :spotify_login
+  get '/auth/spotify/callback', to: 'sessions#create'
 
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :users, only: [:show]
 
 end
