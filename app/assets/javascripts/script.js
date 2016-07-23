@@ -1,7 +1,7 @@
 $(function() {
   $.ajax({
     beforeSend: function(request) {
-    request.setRequestHeader("Authorization", 'Bearer BQAdaiUyRanPFiBaYZmdRgo-50C-k43-WHEVj5XOXAnQlvjTfbeAV6FOLT93qoydiw3mbM4k81dvCAB3oVgGGIf4J5r10m6KnqlRLp6wEy49vhfriC_D7M5uYF9W-znxmihRp4jN4A');
+    request.setRequestHeader("Authorization", 'Bearer ');
     },
     url: "https://api.spotify.com/v1/browse/categories",
 
