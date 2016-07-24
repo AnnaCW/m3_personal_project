@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-md-6 browse">
+    <h2> Browse Categories</h2>
+    <div>
+      <ul id="browse-categories">
+      <% @categories.each do |category| %>
+      <li> <%= category.name %> </li>
+      <% end %>
+      </ul>
+    </div>
+
+
+  </div>
+
+</div>

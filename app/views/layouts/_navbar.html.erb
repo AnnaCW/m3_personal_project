@@ -42,12 +42,11 @@
 
                   <li class="navbar-text">
                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <%= current_user.screen_name %>
+                    Logged in as <%= current_user.screen_name %>
                   </li>
 
                   <li><%= link_to "Logout", logout_path, method: :delete %></li>
               <% else %>
-                <li><%= link_to "LogIn With Github", github_login_path %></li>
                 <li><%= link_to "LogIn With Spotify", spotify_login_path %></li>
               <% end %>
             </ul>
