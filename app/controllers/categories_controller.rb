@@ -4,4 +4,9 @@ class CategoriesController < ApplicationController
     @presenter = CategoriesPresenter.new(user)
   end
 
+  def show
+    user = current_user if current_user
+    @presenter = CategoriesPresenter.new(user)
+  end
+
 end

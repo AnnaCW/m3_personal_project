@@ -12,6 +12,21 @@ class SpotifyService
     parse(response)
   end
 
+  def get_category(user, category_id)
+    user.refresh_token_if_expired
+    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
+    response = conn.get("browse/categories/#{category_id}")
+    parse(response)
+  end
+
+  def get_playlists(user, category_id)
+    user.refresh_token_if_expired
+    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
+    response = conn.get("browse/categories/#{category_id}/playlists")
+    parse(response)
+  end
+
+
 
   private
 

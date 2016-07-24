@@ -13,4 +13,12 @@ class Category
       category["id"] == "toplists" || category["id"] == "focus"
     end
   end
+
+  def self.find(user, category_id)
+    Category.service.get_category(user, category_id)
+  end
+
+  def self.playlists(user, category_id)
+    Category.service.get_playlists(user, category_id)
+  end
 end
