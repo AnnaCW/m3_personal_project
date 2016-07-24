@@ -12,10 +12,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
 gem 'rspec-rails'
-# gem 'omniauth'
-# gem 'omniauth-github'
 
 gem 'omniauth-oauth2', '~> 1.4'
+gem 'rest-client'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -34,6 +33,7 @@ group :test do
   gem 'database_cleaner'
   gem 'webmock'
   gem 'vcr'
+  gem 'simplecov'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
