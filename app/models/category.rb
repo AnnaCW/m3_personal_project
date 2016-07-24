@@ -5,11 +5,14 @@ class Category
   end
 
   def self.all(user)
-    Category.service.get_categories(user)
+    raw_categories = Category.service.get_categories(user)
+    raw_categories["categories"]["items"].map do |raw_category|
+      OpenStruct.new(raw_category)
+    end
   end
 
   def self.popular(user)
-    self.all(user)["categories"]["items"].select do |category|
+    self.all(user).select do |category|
       category["id"] == "toplists" || category["id"] == "focus"
     end
   end

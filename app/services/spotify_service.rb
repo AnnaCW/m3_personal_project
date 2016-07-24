@@ -2,7 +2,6 @@ class SpotifyService
 
   def initialize
     @_conn = Faraday.new("https://api.spotify.com/v1")
-    # @_user = user
   end
 
   def get_categories(user)
