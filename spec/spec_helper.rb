@@ -2,7 +2,7 @@ require 'simplecov'
 
 SimpleCov.start do
   add_filter "/spec/"
-  
+
   add_group "Controllers", "app/controllers"
   add_group "Models", "app/models"
   add_group "Helpers", "app/helpers"
@@ -12,16 +12,16 @@ end
 
 RSpec.configure do |config|
 
-  config.before(:suite) do
-      DatabaseCleaner.strategy = :transaction
-      DatabaseCleaner.clean_with(:truncation)
-    end
-
-    config.around(:each) do |example|
-      DatabaseCleaner.cleaning do
-        example.run
-      end
-    end
+  # config.before(:suite) do
+  #     DatabaseCleaner.strategy = :transaction
+  #     DatabaseCleaner.clean_with(:truncation)
+  #   end
+  #
+  #   config.around(:each) do |example|
+  #     DatabaseCleaner.cleaning do
+  #       example.run
+  #     end
+  #   end
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
