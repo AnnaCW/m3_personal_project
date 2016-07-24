@@ -1,4 +1,4 @@
-class Category < OpenStruct
+class Category
 
   def self.service
     @@service = SpotifyService.new
@@ -6,5 +6,11 @@ class Category < OpenStruct
 
   def self.all(user)
     Category.service.get_categories(user)
+  end
+
+  def self.popular(user)
+    self.all(user)["categories"]["items"].select do |category|
+      category["id"] == "toplists" || category["id"] == "focus"
+    end
   end
 end

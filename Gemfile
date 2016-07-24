@@ -12,10 +12,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
 gem 'rspec-rails'
-# gem 'omniauth'
-# gem 'omniauth-github'
 
 gem 'omniauth-oauth2', '~> 1.4'
+gem 'rest-client'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 

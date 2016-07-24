@@ -6,8 +6,9 @@ class SpotifyService
   end
 
   def get_categories(user)
-    conn.headers["Authorization"] = "Bearer #{user.refresh_token}"
-    response = conn.get("/browse/categories")
+    user.refresh_token_if_expired
+    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
+    response = conn.get("browse/categories")
     parse(response)
   end
 
