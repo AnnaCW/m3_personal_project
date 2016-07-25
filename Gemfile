@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'figaro'
 gem 'rspec-rails'
+gem 'newrelic_rpm'
 
 gem 'omniauth-oauth2', '~> 1.4'
 gem 'rest-client'
