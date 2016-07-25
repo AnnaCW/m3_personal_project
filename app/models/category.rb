@@ -22,6 +22,6 @@ class Category
   end
 
   def self.playlists(user, category_id)
-    Category.service.get_playlists(user, category_id)
+    Category.service.get_category_playlists(user, category_id)
   end
 end

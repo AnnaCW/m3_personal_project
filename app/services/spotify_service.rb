@@ -5,27 +5,22 @@ class SpotifyService
   end
 
   def get_categories(user)
-    user.refresh_token_if_expired
-    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
+    set_header(user)
     response = conn.get("browse/categories")
     parse(response)
   end
 
   def get_category(user, category_id)
-    user.refresh_token_if_expired
-    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
+    set_header(user)
     response = conn.get("browse/categories/#{category_id}")
     parse(response)
   end
 
-  def get_playlists(user, category_id)
-    user.refresh_token_if_expired
-    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
+  def get_category_playlists(user, category_id)
+    set_header(user)
     response = conn.get("browse/categories/#{category_id}/playlists")
     parse(response)
   end
-
-
 
   private
 
@@ -33,12 +28,13 @@ class SpotifyService
     @_conn
   end
 
-  def user
-    @_user
-  end
-
   def parse(response)
     JSON.parse(response.body)
+  end
+
+  def set_header(user)
+    user.refresh_token_if_expired
+    conn.headers["Authorization"] = "Bearer #{user.oauth_token}"
   end
 
 end
