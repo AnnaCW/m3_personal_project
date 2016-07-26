@@ -14,18 +14,6 @@ class User < ApplicationRecord
     end
   end
 
-  # def self.find_or_create_from_auth(auth_info)
-  #    user = User.find_or_create_by(
-  #           provider: auth_info.provider,
-  #           uid: auth_info.info.id,
-  #           name: auth_info.info.display_name,
-  #           screen_name: auth_info.info.id,
-  #           oauth_token: auth_info.credentials.token,
-  #           refresh_token: auth_info.credentials.refresh_token,
-  #           expires_at: auth_info.credentials.expires_at
-  #         )
-  # end
-
   def refresh_token_if_expired
     if token_expired?
       response    = RestClient.post "https://accounts.spotify.com/api/token", :grant_type => 'refresh_token', :refresh_token => self.refresh_token, :client_id => ENV['SPOTIFY_KEY'], :client_secret => ENV['SPOTIFY_SECRET']
@@ -49,10 +37,10 @@ class User < ApplicationRecord
 
   def token_expired?
     expiry = Time.at(self.expires_at.to_i.seconds)
-    return true if expiry < Time.now # expired token, so we should quickly return
+    return true if expiry < Time.now
     token_expires_at = expiry
     save if changed?
-    false # token not expired. :D
+    false
   end
 
 end

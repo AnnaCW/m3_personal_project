@@ -1,13 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # it { should validate_presence_of (:uid) }
-  # it { should validate_presence_of (:screen_name) }
-  # it { should validate_presence_of (:name) }
-  # it { should validate_presence_of (:oauth_token)}
-  #
-  # it { should validate_uniqueness_of (:uid) }
-  # it { should validate_uniqueness_of (:screen_name) }
-  # it { should validate_uniqueness_of (:oauth_token) }
+
+  context "#user" do
+    it "updates user attributes" do
+      VCR.use_cassette("user") do
+        user = create(:user)
+        user_expired = create(:user, expires_at: "1469489603")
+
+        expect(user.token_expired?).to eq(false)
+        expect(user.refresh_token_if_expired).to eq(nil)
+
+        expect(user_expired.token_expired?).to eq(true)
+      end
+    end
+  end
 
 end
