@@ -13,8 +13,13 @@ class Category
 
   def self.popular(user)
     self.all(user).select do |category|
-      category["id"] == "toplists" || category["id"] == "focus"
+      # category["id"] == "toplists" || category["id"] == "focus"
+      self.popular_ids.include?(category["id"])
     end
+  end
+
+  def self.popular_ids
+    %w(toplists focus dinner sleep travel decades jazz blues classical)
   end
 
   def self.find(user, category_id)

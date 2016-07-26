@@ -31,7 +31,7 @@ class User < ApplicationRecord
         expires_at: DateTime.now + refreshhash["expires_in"].to_i.seconds
       )
 
-      self.save
+      # self.save
       puts 'Saved'
     end
   end
