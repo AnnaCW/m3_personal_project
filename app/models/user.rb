@@ -3,7 +3,7 @@ require 'rest-client'
 class User < ApplicationRecord
 
   def self.from_omniauth(auth_info)
-    where(uid: auth_info[:uid]).first_or_create do |new_user|
+    new_user = find_or_create_by(uid: auth_info[:uid])
       new_user.uid = auth_info.info.id
       new_user.provider = auth_info.provider
       new_user.name = auth_info.info.display_name
@@ -11,7 +11,8 @@ class User < ApplicationRecord
       new_user.oauth_token = auth_info.credentials.token
       new_user.refresh_token = auth_info.credentials.refresh_token
       new_user.expires_at = auth_info.credentials.expires_at
-    end
+      new_user.save!
+      new_user
   end
 
   def refresh_token_if_expired
@@ -30,7 +31,7 @@ class User < ApplicationRecord
         expires_at: DateTime.now + refreshhash["expires_in"].to_i.seconds
       )
 
-      # self.save
+      self.save
       puts 'Saved'
     end
   end

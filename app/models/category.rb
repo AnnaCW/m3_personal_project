@@ -1,7 +1,7 @@
 class Category
 
   def self.service
-    @@service = SpotifyService.new
+    @@service ||= SpotifyService.new
   end
 
   def self.all(user)
