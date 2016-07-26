@@ -1,11 +1,11 @@
 class Category
 
-  def self.service
-    @@service ||= SpotifyService.new
+  def self.service(user)
+    @@service ||= SpotifyService.new(user)
   end
 
   def self.all(user)
-    raw_categories = Category.service.get_categories(user)
+    raw_categories = Category.service(user).get_categories
     raw_categories["categories"]["items"].map do |raw_category|
       OpenStruct.new(raw_category)
     end
@@ -13,7 +13,6 @@ class Category
 
   def self.popular(user)
     self.all(user).select do |category|
-      # category["id"] == "toplists" || category["id"] == "focus"
       self.popular_ids.include?(category["id"])
     end
   end
@@ -23,13 +22,11 @@ class Category
   end
 
   def self.find(user, category_id)
-    Category.service.get_category(user, category_id)
+    Category.service(user).get_category(category_id)
   end
 
   def self.playlists(user, category_id)
-    # Category.service.get_category_playlists(user, category_id)
-
-    raw_playlists = Category.service.get_category_playlists(user, category_id)
+    raw_playlists = Category.service(user).get_category_playlists(category_id)
     raw_playlists["playlists"]["items"].map do |raw_playlist|
       OpenStruct.new(raw_playlist)
     end

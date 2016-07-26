@@ -23,6 +23,5 @@ module OmniAuth
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  # provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
   provider :spotify, ENV['SPOTIFY_KEY'], ENV['SPOTIFY_SECRET']
 end
