@@ -6,7 +6,7 @@ describe SpotifyService do
       user = create(:user)
       VCR.use_cassette("categories") do
 
-        result = SpotifyService.new.get_categories(user)
+        result = SpotifyService.new(user).get_categories
 
         expect(result["categories"]["items"].count).to eq(31)
         expect(result["categories"]["items"].first["name"]).to eq("Top Lists")
@@ -20,7 +20,7 @@ describe SpotifyService do
       category_id = "toplists"
       VCR.use_cassette("category") do
 
-        result = SpotifyService.new.get_category(user, category_id)
+        result = SpotifyService.new(user).get_category(category_id)
 
         expect(result["name"]).to eq("Top Lists")
       end
@@ -31,7 +31,7 @@ describe SpotifyService do
       category_id = "focus"
       VCR.use_cassette("category_playlists") do
 
-        result = SpotifyService.new.get_category_playlists(user, category_id)
+        result = SpotifyService.new(user).get_category_playlists(category_id)
 
         expect(result["playlists"]["items"].count).to eq(20)
         expect(result["playlists"]["items"].first).to have_key("name")

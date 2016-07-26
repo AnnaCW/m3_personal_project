@@ -1,23 +1,24 @@
 require 'rails_helper'
 
-OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({
-    provider: 'spotify',
-    info: {
-      id: "1234",
-      name: "Anna",
-      screen_name: "aw123"
-    },
-    credentials: {
-      token: "token1",
-      refresh_token: "refreshtoken"
-      }
-    })
-
+# OmniAuth.config.test_mode = true
+#   OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({
+#     provider: 'spotify',
+#     info: {
+#       id: "aweisbro8",
+#       display_name: "nil"
+#     },
+#     credentials: {
+#       token: ENV['OAUTH_TOKEN'],
+#       refresh_token: ENV['REFRESH_TOKEN'],
+#       expires_at: ENV['EXPIRES_AT']
+#       }
+#     })
+#
 # feature "user can browse categories" do
 #   scenario "user selects category; sees associated playlists" do
-#   current_user = create(:user)
-#   VCR.use_cassette("category_playlists") do
+#     user = create(:user)
+#
+#     VCR.use_cassette("browse-categories") do
 #
 #       visit "/"
 #
@@ -29,13 +30,13 @@ OmniAuth.config.test_mode = true
 #       expect(page).to have_content "Browse Categories"
 #
 #       click_on "Browse Categories"
-#
-#       expect(current_path).to eq(categories_path)
-#
-#       click_on "Focus"
-#
-#       expect(currrent_path).to eq(category_path(category))
-#       expect(page).to have_content("Peaceful Piano")
+#       #
+#       # expect(current_path).to eq(categories_path)
+#       #
+#       # click_on "Focus"
+#       #
+#       # expect(current_path).to eq(category_path("focus"))
+#       # expect(page).to have_content("Peaceful Piano")
 #     end
 #   end
 # end
