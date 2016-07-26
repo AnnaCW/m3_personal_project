@@ -24,21 +24,24 @@ class User < ApplicationRecord
       # expiresat_will_change!
 
       self.oauth_token     = refreshhash['access_token']
-      self.expires_at = DateTime.now + refreshhash["expires_in"].to_i.seconds
+      self.expires_at = Time.now.to_i + refreshhash["expires_in"].to_i
+      # DateTime.now + refreshhash["expires_in"].to_i.seconds
 
       self.update_attributes(
         oauth_token: refreshhash['access_token'],
-        expires_at: DateTime.now + refreshhash["expires_in"].to_i.seconds
+        expires_at: Time.now.to_i + refreshhash["expires_in"].to_i
+        # DateTime.now + refreshhash["expires_in"].to_i.seconds
       )
 
-      # self.save
+      self.save
       puts 'Saved'
     end
   end
 
   def token_expired?
-    expiry = Time.at(self.expires_at.to_i.seconds)
-    return true if expiry < Time.now
+    expiry = self.expires_at.to_i
+    # Time.at(self.expires_at.to_i.seconds)
+    return true if expiry < Time.now.to_i
     token_expires_at = expiry
     save if changed?
     false
