@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :categories, only: [:index, :show]
+  resources :playlists, only: [:show]
 
 end

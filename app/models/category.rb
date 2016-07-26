@@ -27,6 +27,11 @@ class Category
   end
 
   def self.playlists(user, category_id)
-    Category.service.get_category_playlists(user, category_id)
+    # Category.service.get_category_playlists(user, category_id)
+
+    raw_playlists = Category.service.get_category_playlists(user, category_id)
+    raw_playlists["playlists"]["items"].map do |raw_playlist|
+      OpenStruct.new(raw_playlist)
+    end
   end
 end

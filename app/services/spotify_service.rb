@@ -22,6 +22,12 @@ class SpotifyService
     parse(response)
   end
 
+  # def get_playlist(user, playlist_id)
+  #   set_header(user)
+  #   response = conn.get("search?=id:#{param}")
+  #   parse(response)
+  # end
+
   private
 
   def conn
