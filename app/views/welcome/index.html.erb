@@ -5,4 +5,6 @@
   </h2>
 
 </div>
-<%= link_to "Browse Categories", categories_path, class: "btn btn-primary" %>
+<% if current_user %>
+  <%= link_to "Browse Categories", categories_path, class: "btn btn-primary" %>
+<% end %>
