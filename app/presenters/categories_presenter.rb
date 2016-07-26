@@ -17,7 +17,7 @@ class CategoriesPresenter
   end
 
   def find(category_id)
-    @find = Category.find(user, category_id)
+    @find ||= Category.find(user, category_id)
   end
 
   private
@@ -25,5 +25,4 @@ class CategoriesPresenter
   def user
     @_user
   end
-
 end
