@@ -11,7 +11,7 @@ RSpec.describe Category, type: :model do
       VCR.use_cassette("categories") do
         categories = Category.all(user)
 
-        expect(categories.count).to eq(20)
+        expect(categories.count).to eq(31)
         expect(categories.first.name).to eq("Top Lists")
       end
     end

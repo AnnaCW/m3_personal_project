@@ -6,7 +6,7 @@ class SpotifyService
 
   def get_categories(user)
     set_header(user)
-    response = conn.get("browse/categories")
+    response = conn.get("browse/categories?offset=0&limit=40")
     parse(response)
   end
 

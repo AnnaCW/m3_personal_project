@@ -8,7 +8,7 @@ describe SpotifyService do
 
         result = SpotifyService.new.get_categories(user)
 
-        expect(result["categories"]["items"].count).to eq(20)
+        expect(result["categories"]["items"].count).to eq(31)
         expect(result["categories"]["items"].first["name"]).to eq("Top Lists")
       end
     end
