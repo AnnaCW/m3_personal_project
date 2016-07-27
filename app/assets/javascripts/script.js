@@ -1,3 +1,25 @@
+// $(document).ready(function(){
+//
+//   var $genres = $('.genre');
+//
+//   $('#genre-dropdown').on("change", function(){
+//     var currentGenre = this.value;
+//     $genres.each(function (index, genre) {
+//       var $genre = $(genre);
+//       if($genre.data("genre") === currentGenre) {
+//         $genre.show();
+//       } else {
+//         $genre.hide();
+//       }
+//     })
+//
+//   })
+//
+// });
+
+// $('#genre-dropdown').val();
+
+
 // $(function() {
 //   $.ajax({
 //     beforeSend: function(request) {

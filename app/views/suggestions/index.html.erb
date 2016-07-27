@@ -1,0 +1,41 @@
+<div class="container suggestions-container">
+  <h2>Find the Perfect Music</h2>
+</div>
+
+<div class="col-md-4">
+  <div class="suggest row" id="genre-list">
+    <h3>By Genre</h3>
+
+    <%= form_for @genres do |f| %>
+      <% f.select (:genre) do %>
+    <% end %>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="genre-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Select Genre
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <% @genres.each do |genre| %>
+          <li role="separator" class="divider"></li>
+          <li><a href="#"><%= genre %></a></li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+  <div class="col-md-4">
+    <div class="suggest row">
+      <h3>By Genre</h3>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="suggest row">
+      <h3>By Genre</h3>
+    </div>
+  </div>
+
+</div>
