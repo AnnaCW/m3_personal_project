@@ -59,6 +59,7 @@ describe SpotifyService do
                                           "seed_tracks" => nil,
                                           "seed_genres" => "jazz"
                                             })
+
         expect( result["tracks"].count ).to eq(10)
         expect( result["tracks"].first ).to have_key("name")
         expect( result["tracks"].first["artists"].first ).to have_key("name")

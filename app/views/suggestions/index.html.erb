@@ -2,38 +2,42 @@
   <h2>Find the Perfect Music</h2>
 </div>
 
-<div class="col-md-4">
-  <div class="suggest row" id="genre-list">
+<div class="col-md-12">
+  <div class="suggest row">
     <h3>By Genre</h3>
 
-    
+    <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
+              <div class="form-group">
+                <%= select_tag :genre, options_for_select(@genres), class: "large-search" %>
+                <%= submit_tag "GET!", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+  </div>
 
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="genre-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Select Genre
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <% @genres.each do |genre| %>
-          <li role="separator" class="divider"></li>
-          <li><a href="#"><%= genre %></a></li>
+    <% if @suggestions %>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Track</td>
+            <td>Artist</td>
+            <td>Album</td>
+            <td>Play It</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @suggestions.each do |track| %>
+        <tr>
+          <td><%= track.name %></td>
+          <td><%= track.artists.first["name"] %></td>
+          <td><%= track.album["name"] %></td>
+          <td><iframe src="https://embed.spotify.com/?uri=<%= track.uri %>&theme=white" width="250" height="80" frameborder="0" allowtransparency="true"></iframe></td>
+        </tr>
         <% end %>
-      </ul>
-    </div>
+      </tbody>
 
-  </div>
-</div>
+      </table>
+    <% end %>
 
-  <div class="col-md-4">
-    <div class="suggest row">
-      <h3>By Genre</h3>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="suggest row">
-      <h3>By Genre</h3>
-    </div>
-  </div>
+ </div>
 
 </div>
