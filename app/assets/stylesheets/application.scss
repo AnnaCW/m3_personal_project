@@ -47,3 +47,20 @@ background-color: #141145;
   text-align: center;
     background-color: rgba(255, 255, 255, .05);
 }
+
+.suggest {
+  text-align: center;
+  background-color: rgba(224, 255, 255, .18);
+  margin-top: 10px;
+  margin: 1px;
+  padding: 10px;
+  border-color: white;
+  border-radius: 8px;
+  // color: rgba(25, 0, 51, .9);
+  color: rgba(224, 255, 255, .9);
+  height: 300px;
+}
+
+.suggestions-container {
+  margin-bottom: 10px;
+}
