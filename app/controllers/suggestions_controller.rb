@@ -3,7 +3,7 @@ class SuggestionsController < ApplicationController
   def index
     user = current_user if current_user
     @genres = Suggestion.genres(user)
-    @decades = Suggestion.decades(user)
+    @decades = Suggestion.decades
 
     if params[:commit] && params[:genre]
       if params[:genre] == ""
@@ -18,9 +18,9 @@ class SuggestionsController < ApplicationController
       if params[:decade] == ""
         @suggestions_from_decade == false
       else
-        selected_genre = params[:decade]
-        @decade = selected_genre.capitalize
-        @suggestions_from_decade = Suggestion.get_from_seeds(user, {"seed_artists" => nil, "seed_tracks" => nil, "seed_genres" => selected_genre} )
+        selected_decade = params[:decade]
+        @decade = selected_decade
+        @suggestions_from_decade = Suggestion.decade_playlists(user, selected_decade)
       end
     end
   end

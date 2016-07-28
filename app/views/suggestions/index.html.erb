@@ -4,7 +4,7 @@
 
 <div class="col-md-12">
   <div class="suggest genre row">
-    <h3>By Genre</h3>
+    <h3>Top Tracks by Genre</h3>
 
     <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
               <div class="form-group">
@@ -42,8 +42,8 @@
     <% end %>
 
 
-    <div class="suggest decades row">
-      <h3>By Decade</h3>
+    <div class="suggest decade row">
+      <h3>Search for Playlists by Decade</h3>
       <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
             <div class="form-group">
                 <%= select_tag :decade, options_for_select(@decades), :prompt => "Select Decade", class: "large-search" %>
@@ -51,6 +51,31 @@
             </div>
       <% end %>
     </div>
+
+    <% if @suggestions_from_decade %>
+    <div class="decade-suggestions-header">
+      <h3> <%= @decade %> Playlists </h3>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Playlist</td>
+            <td>Number of Tracks</td>
+            <td>Go To Playlist</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @suggestions_from_decade.each do |playlist| %>
+        <tr>
+          <td><%= playlist.name %></td>
+          <td><%= playlist.tracks["total"] %></td>
+          <td>Link to Playlist</td>
+        </tr>
+        <% end %>
+      </tbody>
+
+      </table>
+    <% end %>
 
 
 </div>
