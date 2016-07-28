@@ -6,7 +6,7 @@ class SuggestionsController < ApplicationController
 
     if params[:commit]
       selected_genre = params[:genre]
-      @suggestions = Suggestion.get_from_seeds(user, {"seed_artists" => nil, "seed_tracks" => nil, "seed_genres" => selected_genre} )
+      @suggestions_from_genre = Suggestion.get_from_seeds(user, {"seed_artists" => nil, "seed_tracks" => nil, "seed_genres" => selected_genre} )
     end
   end
 

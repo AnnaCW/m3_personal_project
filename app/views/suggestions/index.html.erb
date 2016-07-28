@@ -14,7 +14,7 @@
             <% end %>
   </div>
 
-    <% if @suggestions %>
+    <% if @suggestions_from_genre %>
       <table class="table">
         <thead>
           <tr>
@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @suggestions.each do |track| %>
+        <% @suggestions_from_genre.each do |track| %>
         <tr>
           <td><%= track.name %></td>
           <td><%= track.artists.first["name"] %></td>
@@ -38,6 +38,16 @@
       </table>
     <% end %>
 
- </div>
+
+    <div class="suggest row">
+      <h3>By Decade</h3>
+      <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
+            <div class="form-group">
+                <%= select_tag :decade, options_for_select(["decade1", "decade2"]), class: "large-search" %>
+                <%= submit_tag "GET!", class: "btn btn-primary" %>
+            </div>
+      <% end %>
+    </div>
+
 
 </div>
