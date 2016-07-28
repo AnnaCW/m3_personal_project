@@ -12,8 +12,13 @@ feature "user gets suggestions" do
 
       expect(current_path).to eq(suggestions_path)
 
+      select "jazz", from: "genre"
+      within("div.genre") do
+        click_on "GET!"
+      end
 
-
+      expect(current_path).to eq(suggestions_path)
+      expect(page).to have_content("Top Jazz Selections")
 
     end
   end

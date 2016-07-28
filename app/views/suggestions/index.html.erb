@@ -3,7 +3,7 @@
 </div>
 
 <div class="col-md-12">
-  <div class="suggest row">
+  <div class="suggest genre row">
     <h3>By Genre</h3>
 
     <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
@@ -15,6 +15,9 @@
   </div>
 
     <% if @suggestions_from_genre %>
+    <div class="genre-suggestions-header">
+      <h3>Top <%= @genre %> Selections </h3>
+    </div>
       <table class="table">
         <thead>
           <tr>
