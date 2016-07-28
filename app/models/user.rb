@@ -3,7 +3,7 @@ require 'rest-client'
 class User < ApplicationRecord
 
   def self.from_omniauth(auth_info)
-    new_user = find_or_create_by(uid: auth_info[:uid])
+    new_user = find_or_create_by(uid: auth_info[:info][:id])
       new_user.uid = auth_info.info.id
       new_user.provider = auth_info.provider
       new_user.name = auth_info.info.display_name
