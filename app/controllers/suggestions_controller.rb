@@ -2,8 +2,7 @@ class SuggestionsController < ApplicationController
 
   def index
     user = current_user if current_user
-    @genres = Suggestion.genres(user)
-    @decades = Suggestion.decades
+    @presenter ||= SuggestionsPresenter.new(user, params)
 
     if params[:commit] && params[:genre]
       if params[:genre] == ""
