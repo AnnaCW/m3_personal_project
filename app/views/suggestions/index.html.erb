@@ -8,8 +8,8 @@
 
     <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
               <div class="form-group">
-                <%= select_tag :genre, options_for_select(@genres), class: "large-search" %>
-                <%= submit_tag "GET!", class: "btn btn-primary" %>
+                <%= select_tag :genre, options_for_select(@genres), :prompt => "Select Genre", class: "large-search" %>
+                <%= submit_tag "GET!", class: "btn btn-success" %>
               </div>
             <% end %>
   </div>
@@ -42,12 +42,12 @@
     <% end %>
 
 
-    <div class="suggest row">
+    <div class="suggest decades row">
       <h3>By Decade</h3>
       <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
             <div class="form-group">
-                <%= select_tag :decade, options_for_select(["decade1", "decade2"]), class: "large-search" %>
-                <%= submit_tag "GET!", class: "btn btn-primary" %>
+                <%= select_tag :decade, options_for_select(["decade1", "decade2"]), :prompt => "Select Decade", class: "large-search" %>
+                <%= submit_tag "GET!", class: "btn btn-success" %>
             </div>
       <% end %>
     </div>
