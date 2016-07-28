@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160717153955) do
+ActiveRecord::Schema.define(version: 20160728211841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listening_sessions", force: :cascade do |t|
+    t.text    "notes"
+    t.string  "item_name"
+    t.string  "item_type"
+    t.string  "item_id"
+    t.integer "user_id"
+    t.string  "rating"
+    t.index ["user_id"], name: "index_listening_sessions_on_user_id", using: :btree
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trackings", force: :cascade do |t|
+    t.string   "item_name"
+    t.string   "item_type"
+    t.string   "item_id"
+    t.string   "rating"
+    t.text     "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_trackings_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "uid"
@@ -28,4 +55,6 @@ ActiveRecord::Schema.define(version: 20160717153955) do
     t.string   "expires_at"
   end
 
+  add_foreign_key "listening_sessions", "users"
+  add_foreign_key "trackings", "users"
 end
