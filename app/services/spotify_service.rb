@@ -29,7 +29,12 @@ class SpotifyService
     response = conn.get("recommendations?seed_artists=#{seeds['seed_artists']}&seed_tracks=#{seeds['seed_tracks']}&seed_genres=#{seeds['seed_genres']}&min_popularity=50&limit=10&market=US")
     parse(response)
   end
-  # # recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_tracks=0c6xIDDpzE81m2q797ordA&min_energy=0.4&min_popularity=50&market=US"
+
+  def get_decade_playlists(decade)
+    response = conn.get("search?type=playlist&q=#{decade}&market=us&limit=10")
+    parse(response)
+  end
+
 
   private
 
