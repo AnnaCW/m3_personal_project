@@ -9,6 +9,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :categories, only: [:index, :show]
-  resources :suggestions, only: [:index]
-
+  resources :suggestions, only: [:index, :show]
 end

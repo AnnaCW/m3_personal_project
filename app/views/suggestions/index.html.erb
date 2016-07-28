@@ -2,40 +2,55 @@
   <h2>Find the Perfect Music</h2>
 </div>
 
-<div class="col-md-4">
-  <div class="suggest row" id="genre-list">
+<div class="col-md-12">
+  <div class="suggest genre row">
     <h3>By Genre</h3>
 
-    <%= form_for @genres do |f| %>
-      <% f.select (:genre) do %>
+    <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
+              <div class="form-group">
+                <%= select_tag :genre, options_for_select(@genres), :prompt => "Select Genre", class: "large-search" %>
+                <%= submit_tag "GET!", class: "btn btn-success" %>
+              </div>
+            <% end %>
+  </div>
+
+    <% if @suggestions_from_genre %>
+    <div class="genre-suggestions-header">
+      <h3>Top <%= @genre %> Selections </h3>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Track</td>
+            <td>Artist</td>
+            <td>Album</td>
+            <td>Play It</td>
+          </tr>
+        </thead>
+        <tbody>
+        <% @suggestions_from_genre.each do |track| %>
+        <tr>
+          <td><%= track.name %></td>
+          <td><%= track.artists.first["name"] %></td>
+          <td><%= track.album["name"] %></td>
+          <td><iframe src="https://embed.spotify.com/?uri=<%= track.uri %>&theme=white" width="250" height="80" frameborder="0" allowtransparency="true"></iframe></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+      </table>
     <% end %>
 
-    <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="genre-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Select Genre
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <% @genres.each do |genre| %>
-          <li role="separator" class="divider"></li>
-          <li><a href="#"><%= genre %></a></li>
-        <% end %>
-      </ul>
+
+    <div class="suggest decades row">
+      <h3>By Decade</h3>
+      <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
+            <div class="form-group">
+                <%= select_tag :decade, options_for_select(["decade1", "decade2"]), :prompt => "Select Decade", class: "large-search" %>
+                <%= submit_tag "GET!", class: "btn btn-success" %>
+            </div>
+      <% end %>
     </div>
 
-  </div>
-</div>
-
-  <div class="col-md-4">
-    <div class="suggest row">
-      <h3>By Genre</h3>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="suggest row">
-      <h3>By Genre</h3>
-    </div>
-  </div>
 
 </div>

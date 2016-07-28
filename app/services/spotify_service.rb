@@ -24,11 +24,11 @@ class SpotifyService
     response = conn.get("recommendations/available-genre-seeds")
     parse(response)
   end
-  #
-  # def get_suggestions(seeds)
-  #   response = conn.get("recommendations?seed_artists=#{}&seed_tracks=#{}&seed_genres#{}")
-  #   parse(response)
-  # end
+
+  def get_suggestions(seeds)
+    response = conn.get("recommendations?seed_artists=#{seeds['seed_artists']}&seed_tracks=#{seeds['seed_tracks']}&seed_genres=#{seeds['seed_genres']}&min_popularity=50&limit=10&market=US")
+    parse(response)
+  end
   # # recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_tracks=0c6xIDDpzE81m2q797ordA&min_energy=0.4&min_popularity=50&market=US"
 
   private
