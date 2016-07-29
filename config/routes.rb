@@ -15,4 +15,14 @@ Rails.application.routes.draw do
   resources :suggestions, only: [:index, :show]
 
   get 'items/:type/:id', to: 'items#show', as: 'item'
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :listening_sessions, only: [:create, :update] do
+        post '/listens', to: 'listening_sessions#create', :on => :member
+        put '/listens/:id', to: 'listening_sessions#update', :on => :member
+      end
+    end
+  end
+
 end
