@@ -18,11 +18,21 @@ $(document).ready(function(){
         $("#create-listen").hide();
         $("#session-box").show();
         $("#session-box").append(
-         "<div class='listen' data-session-id='" + newListeningSession.id +"'></div>"
+         "<div id='session-id' data-target='" + newListeningSession.id +"'></div>"
         )
         $("#session-identifier").text(newListeningSession.item_name);
       }
     })
   })
+
+  // $("#save-button").on('click', function(){
+  //   var listeningSessionId = $("#session-id").data("target")
+  //
+  //   $.ajax({
+  //     url: "/api/v1/listening_sessions/#{listeningSessionId}.json",
+  //     method: "PATCH",
+  //     dataType: "JSON",
+  //     data: {listening_session: {   } },
+
 
 });
