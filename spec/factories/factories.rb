@@ -13,6 +13,12 @@ FactoryGirl.define do
     item_id "lne0ppqrw"
     item_type "track"
     notes "This is a note"
-    rating 9
+    agitation_before 4
+    agitation_after 3
+    awareness_before 3
+    awareness_after 3
+    communicativeness_before 3
+    communicativeness_after 4
+    duration 45
   end
 end
