@@ -16,6 +16,7 @@ gem 'newrelic_rpm'
 
 gem 'omniauth-oauth2', '~> 1.4'
 gem 'rest-client'
+gem 'responders'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 

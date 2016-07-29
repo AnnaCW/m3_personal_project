@@ -6,4 +6,12 @@ FactoryGirl.define do
     refresh_token ENV['REFRESH_TOKEN']
     expires_at ENV['EXPIRES_AT']
   end
+
+  factory :listening_session do
+    user
+    item_id "lne0ppqrw"
+    item_type "track"
+    notes "This is a note"
+    rating 9
+  end
 end

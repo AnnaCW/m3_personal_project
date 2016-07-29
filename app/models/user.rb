@@ -1,6 +1,7 @@
 require 'rest-client'
 
 class User < ApplicationRecord
+  has_many :listening_sessions
 
   def self.from_omniauth(auth_info)
     new_user = find_or_create_by(uid: auth_info[:info][:id])

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :listening_sessions, only: [:create, :update] do
         post '/listens', to: 'listening_sessions#create', :on => :member
         put '/listens/:id', to: 'listening_sessions#update', :on => :member
+        patch '/listens/:id', to: 'listening_sessions#update', :on => :member
       end
     end
   end
