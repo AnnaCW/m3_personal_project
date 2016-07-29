@@ -7,8 +7,19 @@
   </div>
 </div>
 
-<div class="col-md-6 session-box">
+<div class="col-md-6 listening-session">
+
   <div class="row">
-    <button class="btn btn-warning" id="open-listen" type="button" name="button">Open Listening Session</button>
+    <button class="btn btn-warning" id="create-listen" type="button" name="button">Open Listening Session</button>
   </div>
+
+  <div id="session-box">
+
+  </div> 
+
+  <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
+  <div id="item-id" style="display:none;" data-target='<%= @item.id %>'> </div>
+  <div id="item-type" style="display:none;" data-target='<%= @item.type %>'> </div>
+  <div id="item-name" style="display:none;" data-target='<%= @item.name %>'> </div>
+
 </div>

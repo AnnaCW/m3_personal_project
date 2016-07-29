@@ -9,6 +9,7 @@ FactoryGirl.define do
 
   factory :listening_session do
     user
+    item_name "My Favorite Song"
     item_id "lne0ppqrw"
     item_type "track"
     notes "This is a note"
