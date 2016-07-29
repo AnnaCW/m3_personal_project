@@ -35,6 +35,16 @@ class SpotifyService
     parse(response)
   end
 
+  def get_playlist(type, id, owner)
+    response = conn.get("users/#{owner}/#{type}/#{id}")
+    parse(response)
+  end
+
+  def get_item(type, id)
+    response = conn.get("#{type}/#{id}")
+    parse(response)
+  end
+
 
   private
 

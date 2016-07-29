@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :suggestions, only: [:index, :show]
+
+  get 'items/:type/:id', to: 'items#show', as: 'item'
 end

@@ -12,21 +12,16 @@ feature "user records listening session" do
 
       expect(page).to have_content("Peaceful Piano")
 
-      within ("#Peaceful") do
-        click_on "Create New Listen"
+      click_on "Peaceful Piano"
+
+      expect(current_path).to eq('/items/playlists/63dDpdoVHvx5RkK87g4LKk')
+
+      within("h2") do
+        expect(page).to have_content("Peaceful Piano")
       end
 
-      click_on "Go To My Listening Sessions"
+      click_on "Open Listening Session"
 
-      within (".listens#Peaceful") do
-        click_on "Add Notes"
-      end
-
-      fill_in "Notes", with: "These are notes on this session"
-      select "10", from: "Rating"
-      click_on "Update"
-
-      expect(page).to have_content "Listen Updated!"
     end
   end
 end

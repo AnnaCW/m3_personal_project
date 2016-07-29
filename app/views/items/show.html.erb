@@ -1,0 +1,14 @@
+
+
+<div class="col-md-6">
+  <div class="row">
+    <h2><%= @item.name %></h2>
+    <iframe src="https://embed.spotify.com/?uri=<%= @item.uri %>&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
+</div>
+
+<div class="col-md-6 session-box">
+  <div class="row">
+    <button class="btn btn-warning" id="open-listen" type="button" name="button">Open Listening Session</button>
+  </div>
+</div>
