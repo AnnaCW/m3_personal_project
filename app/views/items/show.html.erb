@@ -13,13 +13,26 @@
     <button class="btn btn-warning" id="create-listen" type="button" name="button">Open Listening Session</button>
   </div>
 
-  <div id="session-box">
 
-  </div> 
+  <form>
+    <div id="session-box" style="display:none;">
+      <h3>Listening Session</h3>
+      <h5 id="session-identifier"></h5>
 
-  <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
-  <div id="item-id" style="display:none;" data-target='<%= @item.id %>'> </div>
-  <div id="item-type" style="display:none;" data-target='<%= @item.type %>'> </div>
-  <div id="item-name" style="display:none;" data-target='<%= @item.name %>'> </div>
+      <div class="form-group">
+        <label for='notes'>Notes</label>
+        <textarea class='form-control' id='notesTextarea' rows='5'></textarea>
+      </div>
+
+      <button class='btn btn-success' id='save-button'>Save</button>
+
+  </div>
+
+
+    <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
+    <div id="item-id" style="display:none;" data-target='<%= @item.id %>'> </div>
+    <div id="item-type" style="display:none;" data-target='<%= @item.type %>'> </div>
+    <div id="item-name" style="display:none;" data-target='<%= @item.name %>'> </div>
+  </form>
 
 </div>

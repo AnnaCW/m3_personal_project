@@ -15,11 +15,12 @@ $(document).ready(function(){
 
       success: function(newListeningSession){
         console.log("Success");
+        $("#create-listen").hide();
+        $("#session-box").show();
         $("#session-box").append(
-          "<div class='listen' data-post-id='" + newListeningSession.id +"'>" + newListeningSession.item_name + "</div>"
+         "<div class='listen' data-session-id='" + newListeningSession.id +"'></div>"
         )
-
-
+        $("#session-identifier").text(newListeningSession.item_name);
       }
     })
   })
