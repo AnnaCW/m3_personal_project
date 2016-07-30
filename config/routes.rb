@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   resources :users, only: [:show]
-    
+
   resources :categories, only: [:index, :show]
   resources :suggestions, only: [:index, :show]
+  resources :listening_sessions, only: [:index]
 
   get 'items/:type/:id', to: 'items#show', as: 'item'
 

@@ -37,6 +37,7 @@ group :test do
   gem 'vcr'
   gem 'simplecov'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

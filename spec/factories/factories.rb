@@ -12,6 +12,7 @@ FactoryGirl.define do
     item_name "My Favorite Song"
     item_id "lne0ppqrw"
     item_type "track"
+    playlist_owner_id nil
     notes "This is a note"
     agitation_before 4
     agitation_after 3
