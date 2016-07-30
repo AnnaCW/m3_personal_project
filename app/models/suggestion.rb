@@ -16,6 +16,11 @@ class Suggestion
     end
   end
 
+  def self.api_get_from_seeds(user, seeds)
+    response_object = Suggestion.service(user).get_suggestions(seeds)
+    response_object["tracks"]
+  end
+
   def self.decade_playlists(user, decade)
     response_object = Suggestion.service(user).get_decade_playlists(decade)
 
