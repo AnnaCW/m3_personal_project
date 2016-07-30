@@ -24,5 +24,4 @@ class SuggestionsController < ApplicationController
     end
   end
 
-
 end

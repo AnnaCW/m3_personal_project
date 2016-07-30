@@ -11,7 +11,6 @@ class Suggestion
 
   def self.get_from_seeds(user, seeds)
     response_object = Suggestion.service(user).get_suggestions(seeds)
-
     response_object["tracks"].map do |raw_suggestion|
       OpenStruct.new(raw_suggestion)
     end
