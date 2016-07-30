@@ -44,4 +44,18 @@ feature "user gets suggestions" do
 
     end
   end
+
+  scenario "user sees option to get more like current track" do
+    VCR.use_cassette("suggestions-item") do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return( user )
+
+      visit "/items/tracks/0WTEhNhRIfVyb73rJ6jRNK"
+
+      expect(page).to have_content("Chuck Ragan")
+      expect(page).to have_content("California Burritos")
+
+      click_on "More Like This"
+    end
+  end
 end

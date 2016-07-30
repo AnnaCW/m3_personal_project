@@ -3,6 +3,9 @@
 <div class="col-md-6">
   <div class="row">
     <h2><%= @item.name %></h2>
+    <% if @item.type == "track" %>
+      <h3>by <%= @item.artists.first["name"] %></h3>
+    <% end %>
     <iframe src="https://embed.spotify.com/?uri=<%= @item.uri %>&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
   </div>
 </div>
@@ -110,5 +113,29 @@
     <% end %>
 
   </form>
+
+<!-- SUGGESTIONS BASED ON ITEM IF ITEM = TRACK -->
+
+<% if @item.type == "track"%>
+
+    <button class='btn btn-success' id='track-suggestions'>More Like This</button>
+    <div id="item-id" style="display:none;" data-target='<%= @item.id %>'></div>
+    <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
+
+    <table class="table suggestions" style="display:none;">
+      <thead>
+        <tr>
+          <td>Track</td>
+          <td>Artist</td>
+          <td>Album</td>
+        </tr>
+      </thead>
+      <tbody id="suggested-track-list">
+        <!-- API results -->
+      </tbody>
+
+    </table>
+
+<% end %>
 
 </div>

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         put '/listening_sessions/:id', to: 'listening_sessions#update', :on => :member
         patch '/listening_sessions/:id', to: 'listening_sessions#update', :on => :member
       end
+      resources :suggestions, only: [:index]
     end
   end
 

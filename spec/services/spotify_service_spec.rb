@@ -5,7 +5,6 @@ describe SpotifyService do
     it "returns a list of categories" do
       user = create(:user)
       VCR.use_cassette("categories") do
-
         result = SpotifyService.new(user).get_categories
 
         expect(result["categories"]["items"].count).to eq(31)
@@ -67,6 +66,20 @@ describe SpotifyService do
         expect( result["tracks"].first ).to have_key("uri")
        end
      end
+
+    context "#tracks"
+     it "finds track suggestions" do
+       user = create(:user)
+       VCR.use_cassette("suggestions-track") do
+         result = SpotifyService.new(user).get_suggestions({
+                                           "seed_artists" => nil,
+                                           "seed_tracks" => "0WTEhNhRIfVyb73rJ6jRNK",
+                                           "seed_genres" => nil
+                                             })
+
+         expect( result["tracks"].count ).to eq(6)
+      end
    end
+ end
 
 end
