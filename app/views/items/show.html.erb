@@ -105,6 +105,10 @@
     <div id="item-id" style="display:none;" data-target='<%= @item.id %>'> </div>
     <div id="item-type" style="display:none;" data-target='<%= @item.type %>'> </div>
     <div id="item-name" style="display:none;" data-target='<%= @item.name %>'> </div>
+    <% if @item.owner %>
+      <div id="playlist-owner-id" style="display:none;" data-target='<%= @item.owner["id"] %>'> </div>
+    <% end %>
+
   </form>
 
 </div>
