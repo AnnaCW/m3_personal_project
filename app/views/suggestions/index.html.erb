@@ -30,7 +30,7 @@
         <tbody>
         <% @suggestions_from_genre.each do |track| %>
         <tr>
-          <td><%= track.name %></td>
+          <td><%= link_to track.name, item_path(track.type.pluralize, track.id ) %></td>
           <td><%= track.artists.first["name"] %></td>
           <td><%= track.album["name"] %></td>
           <td><iframe src="https://embed.spotify.com/?uri=<%= track.uri %>&theme=white" width="250" height="80" frameborder="0" allowtransparency="true"></iframe></td>
@@ -61,15 +61,13 @@
           <tr>
             <td>Playlist</td>
             <td>Number of Tracks</td>
-            <td>Go To Playlist</td>
           </tr>
         </thead>
         <tbody>
         <% @suggestions_from_decade.each do |playlist| %>
         <tr>
-          <td><%= playlist.name %></td>
+          <td><%= link_to playlist.name, item_path(playlist.type.pluralize, playlist.id, playlist.owner["id"] ) %></td>
           <td><%= playlist.tracks["total"] %></td>
-          <td>Link to Playlist</td>
         </tr>
         <% end %>
       </tbody>
