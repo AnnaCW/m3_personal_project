@@ -16,6 +16,7 @@ gem 'newrelic_rpm'
 
 gem 'omniauth-oauth2', '~> 1.4'
 gem 'rest-client'
+gem 'responders'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
@@ -36,6 +37,7 @@ group :test do
   gem 'vcr'
   gem 'simplecov'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

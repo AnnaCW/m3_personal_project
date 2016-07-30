@@ -6,8 +6,8 @@
 
     <% @presenter.category_playlists(params[:id]).each do |playlist| %>
 
-          <div class="col-md-4">
-            <h4><%= playlist.name %><h4>
+          <div class="col-md-4" id="<%= playlist.name %>">
+            <h4><%= link_to playlist.name, item_path(playlist.type.pluralize, playlist.id, playlist.owner["id"] ) %><h4>
             <iframe src="https://embed.spotify.com/?uri=<%= playlist.uri %>&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
           </div>
   <% end %>
