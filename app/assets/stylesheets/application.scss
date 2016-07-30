@@ -21,6 +21,14 @@ body {
   background-color: #141145;
 }
 
+a {
+  color: red;
+}
+
+a:hover {
+  color: green;
+}
+
 .navbar-default {
   background-color: #060524;
   border-color: black;
