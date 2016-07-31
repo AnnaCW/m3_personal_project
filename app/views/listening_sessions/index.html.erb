@@ -1,9 +1,116 @@
 <h2>My Listening Sessions</h2>
 
-<ul>
-  <% @listening_sessions.each do |ls| %>
 
-  <li><%= ls.item_name %></li>
+    <table class="table listening-sessions">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Date Updated</td>
+          <td>Date Created</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @listening_sessions.each do |ls| %>
 
-  <% end %>
-</ul>
+        <div class="individual-session" id="<%= ls.id %>" style="display:none;">
+        <tr>
+          <td><%= ls.item_name %> </td>
+          <td><%= ls.formatted_updated_at %></td>
+          <td><%= ls.formatted_created_at %></td>
+          <td><button class='btn btn-primary show-session' id='<%= ls.id %>' data-target='<%= ls.id %>'>Show</button>
+        </tr>
+
+
+      <tr class="session-box" id="<%= ls.id %>" style="display:none;">
+          <td>
+            <form>
+            <div class="form-group">
+              <label for='notes'>Notes</label>
+              <textarea class='form-control notesTextarea' id="<%= ls.id %>" rows='5'> <%= ls.notes %></textarea>
+            </div>
+          </td>
+          <td>
+            <label>Agitation Level Before</label>
+            <select class="form-control-inline agitation-before" id="<%= ls.id %>" selected= '<%= ls.agitation_before %>'>
+              <option><%= ls.agitation_before %></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></br>
+
+            <label>Agitation Level After</label>
+            <select class="form-control-inline agitation-after" id="<%= ls.id %>" selected= '<%= ls.agitation_after %>'>>
+              <option><%= ls.agitation_after %></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></br>
+
+            <label>Awareness of Surroundings Before</label>
+            <select class="form-control-inline awareness-before" id="<%= ls.id %>" selected= '<%= ls.awareness_before %>'>>
+              <option><%= ls.awareness_before %></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></br>
+
+            <label>Awareness of Surroundings After</label>
+            <select class="form-control-inline awareness-after" id="<%= ls.id %>" selected= '<%= ls.awareness_after %>'>
+              <option><%= ls.awareness_after %></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></br>
+
+            <label>Communicativeness Before</label>
+            <select class="form-control-inline communicativeness-before" id="<%= ls.id %>" selected= '<%= ls.communicativeness_before %>'>
+              <option><%= ls.communicativeness_before %></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></br>
+
+            <label>Communicativeness After</label>
+            <select class="form-control-inline communicativeness-after" id="<%= ls.id %>" selected= '<%= ls.communicativeness_after %>'>
+              <option><%= ls.communicativeness_after %></option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></br>
+          </td>
+          <td>
+            <label>Duration of Session (min) </label>
+            <select class="form-control-inline duration" id="<%= ls.id %>" selected= '<%= ls.duration %>'>
+              <option><%= ls.duration %></option>
+              <option>5</option>
+              <option>15</option>
+              <option>30</option>
+              <option>45</option>
+              <option>60</option>
+              <option>90</option>
+              <option>120</option>
+            </select></br>
+
+            <button class='btn btn-success update-button' data-target='<%= ls.id %>'>Update</button>
+            <!-- <div class="ls-id" style="display:none;" data-target='<%= ls.id %>'></div> -->
+        </form>
+
+    </td>
+  </tr>
+  </div>
+    <% end %>
+    <tr></tr>
+  </tbody>
+</table>

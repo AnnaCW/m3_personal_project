@@ -5,4 +5,5 @@
     @listening_sessions = ListeningSession.where(user_id: @user.id)
                                           .order(updated_at: :desc)
   end
+
  end

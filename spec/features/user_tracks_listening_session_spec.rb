@@ -31,7 +31,11 @@ feature "user records listening session" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return( user )
 
-    visit listening_sessions_path
+    visit "/"
+
+    within(".navbar") do
+      click_on "My Listening Sessions"
+    end
 
     expect(page).to have_content("My Favorite Track")
     expect(page).to have_content("Another Track")
