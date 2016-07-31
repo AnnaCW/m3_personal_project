@@ -15,7 +15,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Link</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -39,11 +39,14 @@
 
           <ul class="nav navbar-nav navbar-right">
               <% if current_user %>
+                  <% if current_user.listening_sessions %>
+                    <li><a href="/listening_sessions">My Listening Sessions</a></li>
+                  <% end %>
 
-                  <li class="navbar-text">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    Logged in as <%= current_user.screen_name %>
-                  </li>
+                <li class="navbar-text">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  Logged in as <%= current_user.screen_name %>
+                </li>
 
                   <li><%= link_to "Logout", logout_path, method: :delete %></li>
               <% else %>

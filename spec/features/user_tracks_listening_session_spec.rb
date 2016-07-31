@@ -24,16 +24,21 @@ feature "user records listening session" do
     end
   end
 
-  scenario "user views all listening sessions" do
+  scenario "user can view all listening sessions" do
     user = create(:user)
     listening_session_1 = create(:listening_session, user: user, item_name: "My Favorite Track")
     listening_session_2 = create(:listening_session, user: user, item_name: "Another Track")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return( user )
 
-    visit listening_sessions_path
+    visit "/"
 
-    expect(page).to have_content("My Favorite Track")
-    expect(page).to have_content("Another Track")
+    within(".navbar") do
+      click_on "My Listening Sessions"
+    end
+
+    within("h2") do
+      expect(page).to have_content("My Listening Sessions")
+    end
   end
 end
