@@ -5,6 +5,7 @@ FactoryGirl.define do
     oauth_token ENV['OAUTH_TOKEN']
     refresh_token ENV['REFRESH_TOKEN']
     expires_at ENV['EXPIRES_AT']
+    role 0
   end
 
   factory :listening_session do
