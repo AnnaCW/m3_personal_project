@@ -14,9 +14,9 @@
             <% end %>
   </div>
 
-    <% if @suggestions_from_genre %>
+    <% if @presenter.suggestions_from_genre %>
     <div class="genre-suggestions-header">
-      <h3>Top <%= @genre %> Selections </h3>
+      <h3>Top <%= @presenter.genre %> Selections </h3>
     </div>
       <table class="table">
         <thead>
@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @suggestions_from_genre.each do |track| %>
+        <% @presenter.suggestions_from_genre.each do |track| %>
         <tr>
           <td><%= link_to track.name, item_path(track.type.pluralize, track.id ) %></td>
           <td><%= track.artists.first["name"] %></td>
@@ -52,9 +52,9 @@
       <% end %>
     </div>
 
-    <% if @suggestions_from_decade %>
+    <% if @presenter.suggestions_from_decade %>
     <div class="decade-suggestions-header">
-      <h3> <%= @decade %> Playlists </h3>
+      <h3> <%= @presenter.decade %> Playlists </h3>
     </div>
       <table class="table">
         <thead>
@@ -64,7 +64,7 @@
           </tr>
         </thead>
         <tbody>
-        <% @suggestions_from_decade.each do |playlist| %>
+        <% @presenter.suggestions_from_decade.each do |playlist| %>
         <tr>
           <td><%= link_to playlist.name, item_path(playlist.type.pluralize, playlist.id, playlist.owner["id"] ) %></td>
           <td><%= playlist.tracks["total"] %></td>
