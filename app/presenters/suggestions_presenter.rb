@@ -20,7 +20,7 @@ class SuggestionsPresenter
       else
         selected_genre = params[:genre]
         @suggestions_from_genre = Suggestion.get_from_seeds(user, {"seed_artists" => nil, "seed_tracks" => nil, "seed_genres" => selected_genre} )
-      en
+      end
     end
   end
 

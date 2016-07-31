@@ -30,14 +30,12 @@
               </ul>
             </li>
           </ul>
-          <!-- <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form> -->
-
+        
           <ul class="nav navbar-nav navbar-right">
+            <% if current_user && current_user.admin? %>
+                <li><a href="/admin/listening_sessions">Admin</a></li>
+            <% end %>
+
               <% if current_user %>
                   <% if current_user.listening_sessions %>
                     <li><a href="/listening_sessions">My Listening Sessions</a></li>
