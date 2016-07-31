@@ -1,0 +1,44 @@
+<h1>Admin Listening Sessions</h1>
+
+<%= link_to "Export CSV", "/admin/data_export.csv" %>
+
+<table class="table listening-sessions">
+  <thead>
+    <tr>
+      <td>Session Name</td>
+      <td>User ID</td>
+      <td>Date Updated</td>
+      <td>Date Created</td>
+      <td>Item Type</td>
+      <td>Item ID</td>
+      <td>Agitation Before</td>
+      <td>Agitation After</td>
+      <td>Awareness Before</td>
+      <td>Awareness After</td>
+      <td>Communicativeness Before</td>
+      <td>Communicativeness After</td>
+      <td>Duration</td>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @listening_sessions.each do |ls| %>
+
+    <tr>
+      <td><%= ls.item_name %> </td>
+      <td><%= ls.user_id %> </td>
+      <td><%= ls.formatted_updated_at %></td>
+      <td><%= ls.formatted_created_at %></td>
+      <td><%= ls.item_type %></td>
+      <td><%= ls.item_id %></td>
+      <td><%= ls.agitation_before %></td>
+      <td><%= ls.agitation_after %></td>
+      <td><%= ls.awareness_before %></td>
+      <td><%= ls.awareness_after %></td>
+      <td><%= ls.communicativeness_before %></td>
+      <td><%= ls.communicativeness_after %></td>
+      <td><%= ls.duration %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
