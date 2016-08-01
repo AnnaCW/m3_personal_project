@@ -11,10 +11,6 @@ module OmniAuth
         token_url:     'https://accounts.spotify.com/api/token',
       }
 
-      def info
-        @raw_info ||= access_token.get('me').parsed
-      end
-
       def callback_url
         full_host + script_name + callback_path
       end

@@ -21,18 +21,17 @@ class User < ApplicationRecord
       response    = RestClient.post "https://accounts.spotify.com/api/token", :grant_type => 'refresh_token', :refresh_token => self.refresh_token, :client_id => ENV['SPOTIFY_KEY'], :client_secret => ENV['SPOTIFY_SECRET']
       refreshhash = JSON.parse(response.body)
 
-      self.oauth_token     = refreshhash['access_token']
-      self.expires_at = Time.now.to_i + refreshhash["expires_in"].to_i
+      update_with_refresh_hash(refreshhash)
+    end
+  end
 
+    def update_with_refresh_hash(refreshhash)
       self.update_attributes(
         oauth_token: refreshhash['access_token'],
         expires_at: Time.now.to_i + refreshhash["expires_in"].to_i
       )
-
-      self.save
       puts 'Saved'
     end
-  end
 
   def token_expired?
     expiry = self.expires_at.to_i

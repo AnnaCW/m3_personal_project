@@ -8,7 +8,9 @@ feature "user records listening session" do
 
       visit categories_path
 
-      click_on "Focus"
+      within(".all-categories") do
+        click_on "Focus"
+      end
 
       expect(page).to have_content("Peaceful Piano")
 
