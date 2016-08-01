@@ -16,8 +16,7 @@ $(document).ready(function(){
         $(".suggestions").show();
         $(suggestions).each(function(index, suggestion){
           $("#suggested-track-list").append(
-            "<tr><td>" + suggestion["name"] + "</td>" +
-            //  "<tr><td><a href='items/tracks/"+ suggestion["id"] + "'>" + suggestion["name"] + "</a></td>" +
+            "<tr><td><a href='"+ suggestion["id"] + "'>" + suggestion["name"] + "</a></td>" +
             "<td>" + suggestion["artists"][0]["name"] + "</td>" +
             "<td>" + suggestion["album"]["name"] + "</td></tr>"
           )
