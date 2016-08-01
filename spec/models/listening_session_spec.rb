@@ -9,4 +9,13 @@ RSpec.describe ListeningSession, type: :model do
     expect(session.formatted_updated_at).to eq("07/31/2016 02:00AM")
   end
 
+  it "formats csv" do
+    session = create(:listening_session, item_name: "My Favorite Song")
+    formatted = ListeningSession.to_csv
+
+    expect(formatted).to be_a(String)
+    expect(formatted).to include("id,user_id,item_name")
+    expect(formatted).to include("My Favorite Song")
+  end
+
 end
