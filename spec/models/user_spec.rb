@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   context "#user" do
-    it "updates user attributes" do
+    it "identifies expired token" do
       VCR.use_cassette("user") do
         user = create(:user)
-        user_expired = create(:user, expires_at: "1469489603")
+        user_expired = create(:expired_user, expires_at: "1469642331")
 
         expect(user.token_expired?).to eq(false)
         expect(user.refresh_token_if_expired).to eq(nil)
@@ -14,6 +14,6 @@ RSpec.describe User, type: :model do
         expect(user_expired.token_expired?).to eq(true)
       end
     end
-  end
 
+  end
 end

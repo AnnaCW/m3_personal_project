@@ -8,6 +8,16 @@ FactoryGirl.define do
     role 0
   end
 
+  factory :expired_user, class: User do
+    uid "aweisbro8"
+    screen_name "aweisbro8"
+    oauth_token ENV['E-OAUTH_TOKEN']
+    refresh_token ENV['E-REFRESH_TOKEN']
+    expires_at ENV['E-EXPIRES_AT']
+    role 0
+  end
+
+
   factory :listening_session do
     user
     item_name "My Favorite Song"
