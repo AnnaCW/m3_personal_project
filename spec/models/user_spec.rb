@@ -15,5 +15,16 @@ RSpec.describe User, type: :model do
       end
     end
 
+    it "updates attributes" do
+      user = create(:user)
+      refreshhash = { "access_token" => "123abc", "expires_in" => "3600" }
+      user.update_with_refresh_hash(refreshhash)
+
+      updated_user = User.find(user.id)
+
+      expect(updated_user.oauth_token).to eq("123abc")
+      expect(updated_user.expires_at).to eq( (Time.now.to_i + 3600).to_s )
+    end
+
   end
 end

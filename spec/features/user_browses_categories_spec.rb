@@ -12,7 +12,9 @@ feature "user can browse categories" do
 
       expect(current_path).to eq(categories_path)
 
-      click_on "Focus"
+      within(".popular-categories") do
+        click_on "Focus"
+      end
 
       expect(current_path).to eq(category_path("focus"))
       expect(page).to have_content("Peaceful Piano")

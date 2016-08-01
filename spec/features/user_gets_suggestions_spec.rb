@@ -54,7 +54,7 @@ feature "user gets suggestions" do
 
       expect(page).to have_content("Chuck Ragan")
       expect(page).to have_content("California Burritos")
-
+  
       click_on "More Like This"
     end
   end

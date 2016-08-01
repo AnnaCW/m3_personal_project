@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-md-6">
+  <div class="col-md-6 popular-categories">
     <h2> Browse Popular Categories</h2>
       <table id="browse-categories">
         <% @presenter.popular.each do |category| %>
@@ -12,7 +12,7 @@
 
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-6 all-categories">
     <h2> Browse All Categories</h2>
       <table id="browse-categories">
         <% @presenter.categories.each do |category| %>
