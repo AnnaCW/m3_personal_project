@@ -6,7 +6,11 @@ class Api::V1::ListeningSessionsController < ApiBaseController
 
   def update
     render json: ListeningSession.update(params[:id], listening_session_params)
-    # render status: 204
+  end
+
+  def destroy
+    render json: ListeningSession.destroy(params[:id])
+    # render json: ListeningSession.where(user_id: )
   end
 
   private

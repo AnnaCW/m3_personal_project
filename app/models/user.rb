@@ -26,10 +26,15 @@ class User < ApplicationRecord
   end
 
     def update_with_refresh_hash(refreshhash)
+
+      self.oauth_token     = refreshhash['access_token']
+      self.expires_at = Time.now.to_i + refreshhash["expires_in"].to_i
+
       self.update_attributes(
         oauth_token: refreshhash['access_token'],
         expires_at: Time.now.to_i + refreshhash["expires_in"].to_i
       )
+      self.save
       puts 'Saved'
     end
 

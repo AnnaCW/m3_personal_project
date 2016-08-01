@@ -27,4 +27,16 @@ describe "ListeningSessions Endpoint" do
     expect(parsed_response["notes"]).to eq("Revised Note")
     expect(parsed_response["duration"]).to eq(60)
   end
+
+  it "deletes a listening session" do
+    ls = create(:listening_session)
+
+    delete "/api/v1/listening_sessions/#{ls.id}.json"
+
+    expect(response).to be_success
+
+    parsed_response = JSON.parse(response.body)
+
+    expect(parsed_response["id"]).to eq(ls.id)
+  end
 end
