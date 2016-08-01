@@ -3,45 +3,62 @@ class SpotifyService
   def initialize(user)
     @_conn = Faraday.new("https://api.spotify.com/v1")
     set_header(user)
+    @_cache = ActiveSupport::Cache::MemoryStore.new(expires_in: 5.minutes)
   end
 
   def get_categories
-    response = conn.get("browse/categories?offset=0&limit=40")
+    response = cache.fetch("get-categories") do
+      conn.get("browse/categories?offset=0&limit=40")
+    end
     parse(response)
   end
 
   def get_category(category_id)
-    response = conn.get("browse/categories/#{category_id}")
+    response = cache.fetch("get-category-#{category_id}") do
+      conn.get("browse/categories/#{category_id}")
+    end
     parse(response)
   end
 
   def get_category_playlists(category_id)
-    response = conn.get("browse/categories/#{category_id}/playlists")
+    response = cache.fetch("get-category-playlists-#{category_id}") do
+      conn.get("browse/categories/#{category_id}/playlists")
+    end
     parse(response)
   end
 
   def get_genre_seeds
-    response = conn.get("recommendations/available-genre-seeds")
+    response = cache.fetch("get-genre-seeds") do
+      conn.get("recommendations/available-genre-seeds")
+    end
     parse(response)
   end
 
   def get_suggestions(seeds)
-    response = conn.get("recommendations?seed_artists=#{seeds['seed_artists']}&seed_tracks=#{seeds['seed_tracks']}&seed_genres=#{seeds['seed_genres']}&min_popularity=50&limit=10&market=US")
+    response = cache.fetch("get-suggestions-#{seeds}") do
+      conn.get("recommendations?seed_artists=#{seeds['seed_artists']}&seed_tracks=#{seeds['seed_tracks']}&seed_genres=#{seeds['seed_genres']}&min_popularity=50&limit=10&market=US")
+    end
     parse(response)
   end
 
   def get_decade_playlists(decade)
-    response = conn.get("search?type=playlist&q=#{decade}&market=us&limit=10")
+    response = cache.fetch("get-decade-playlists-#{decade}") do
+      conn.get("search?type=playlist&q=#{decade}&market=us&limit=10")
+    end
     parse(response)
   end
 
   def get_playlist(type, id, owner)
-    response = conn.get("users/#{owner}/#{type}/#{id}")
+    response = cache.fetch("get-playlist-#{owner}-#{type}-#{id}") do
+      conn.get("users/#{owner}/#{type}/#{id}")
+    end
     parse(response)
   end
 
   def get_item(type, id)
-    response = conn.get("#{type}/#{id}")
+    response = cache.fetch("get-item-#{type}-#{id}") do
+      conn.get("#{type}/#{id}")
+    end
     parse(response)
   end
 
@@ -50,6 +67,10 @@ class SpotifyService
 
   def conn
     @_conn
+  end
+
+  def cache
+    @_cache
   end
 
   def set_header(user)

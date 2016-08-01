@@ -43,6 +43,7 @@ RSpec.describe Category, type: :model do
       VCR.use_cassette("category_playlists") do
         category_id = "focus"
         playlists = Category.playlists(user, category_id)
+        
         expect(playlists.first.name).to eq("Peaceful Piano")
       end
     end
