@@ -4,6 +4,7 @@ $(document).ready(function(){
   $("#track-suggestions").on('click', function(){
     var userId = $("#user-id").data("target")
     var itemId = $("#item-id").data("target")
+    $(".suggestions").toggle("style");
 
     $.ajax({
       url: "/api/v1/suggestions.json",
@@ -13,7 +14,7 @@ $(document).ready(function(){
 
       success: function(suggestions){
         console.table(suggestions);
-        $(".suggestions").show();
+        // $(".suggestions").show();
         $(suggestions).each(function(index, suggestion){
           $("#suggested-track-list").append(
             "<tr><td><a href='"+ suggestion["id"] + "'>" + suggestion["name"] + "</a></td>" +
