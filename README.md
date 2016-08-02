@@ -1,24 +1,49 @@
-# README
+### [Musical Memory](http://musicalmemory.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Anna Weisbrodt - Turing School of Software and Design - Module 3 - Personal Project
 
-Things you may want to cover:
 
-* Ruby version
+#### Introduction:
+Musical Memory was inspired by research suggesting that people suffering with Alzheimer's Disease and dementia may respond positively to music, especially music they enjoyed in the past and/or experienced during childhood and young adulthood. Using the Spotify API, Musical Memory enables caregivers and researchers to easily find music that is likely to resonate with an individual based on category, genre, or decade. The app also recommends additional tracks based on the current track selection. The user can create a "listening session" to record the response to a particular track or playlist. An admin user can also export all listening session data to a CSV file. 
 
-* System dependencies
+#### Concepts:
 
-* Configuration
+* API Consumption
+* API Creation
+* Testing APIs
+* Authentication with OmniAuth
+* Authorization
+* Caching
 
-* Database creation
+#### Platforms:
+* Ruby
 
-* Database initialization
+#### Dependencies:
+* Rails 5.0.0
+* PostgreSQL
+* jQuery
+* OmniAuth-OAuth2
+* VCR
+* Webmock
+* RSpec
+* Capybara
+* Shoulda Matchers
+* Factory Girl
+* Faraday
+* Figaro
+* Bootstrap-Sass
 
-* How to run the test suite
+#### Setup:
+* Clone down the repository
+* ``` cd ``` into the repository  
+* ``` bundle ```
+* ``` rake db:create```
+* ``` rake db:schema:load```
 
-* Services (job queues, cache servers, search engines, etc.)
+#### To run the test suite:
 
-* Deployment instructions
+``` rspec ```
 
-* ...
+#### Production:
+
+[Musical Memory](http://musicalmemory.herokuapp.com/)
