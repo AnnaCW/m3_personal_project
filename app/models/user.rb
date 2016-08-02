@@ -26,7 +26,6 @@ class User < ApplicationRecord
   end
 
     def update_with_refresh_hash(refreshhash)
-
       self.oauth_token     = refreshhash['access_token']
       self.expires_at = Time.now.to_i + refreshhash["expires_in"].to_i
 
