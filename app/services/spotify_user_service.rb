@@ -24,6 +24,12 @@ class SpotifyUserService
     parse(response)
   end
 
+  def search_tracks(unformatted_search)
+    formatted_search = unformatted_search.split.join("%20")
+    response = conn.get("search?q=#{formatted_search}&type=track")
+    parse(response)
+  end
+
   private
 
   def conn

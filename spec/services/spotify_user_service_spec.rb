@@ -34,6 +34,14 @@ describe SpotifyUserService do
 
       end
     end
+
+    it "finds tracks for playlist" do
+      VCR.use_cassette("find-tracks") do
+        result = SpotifyUserService.new(user).search_tracks("miles davis blue")
+
+        expect(result["tracks"]["items"].first["name"]).to be_a(String)
+      end
+    end
   end
 
 end
