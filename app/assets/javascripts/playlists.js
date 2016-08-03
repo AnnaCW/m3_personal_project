@@ -46,6 +46,11 @@ $(document).ready(function(){
         $("#playlists-listing").hide();
         $("#add-button").hide();
         $("#cancel-button").hide();
+        $("#added-message").slideDown(function() {
+          setTimeout(function() {
+          $("#added-message").slideUp();
+        }, 3000);
+});
       }
     })
   });
