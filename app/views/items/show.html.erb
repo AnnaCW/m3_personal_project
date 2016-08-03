@@ -121,6 +121,7 @@
   </div>
     <div id="item-id" style="display:none;" data-target='<%= @item.id %>'></div>
     <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
+    <div id="item-uri" style="display:none;" data-target='<%= @item.uri %>'></div>
 
     <table class="table suggestions" style="display:none;">
       <thead>
@@ -137,5 +138,13 @@
     </table>
 
 <% end %>
+
+  <div class="row">
+    <button class="btn btn-primary" id="add-to-existing-playlist" type="button" name="button">Add to Existing Playlist</button>
+  </div>
+
+  <div id="playlists-listing"></div>
+
+  <button class="btn btn-success btn-xs" id="add-button" style="display:none;" type="button" name="button">Add</button>
 
 </div>

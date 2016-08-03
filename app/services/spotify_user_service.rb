@@ -15,7 +15,7 @@ class SpotifyUserService
   end
 
   def add_track(playlist_id, track_uri)
-    response = conn.post("users/#{user.uid}/playlists/#{playlist_id}/tracks?uris=#{track_uri}")
+    response = conn.post("users/#{user.uid}/playlists/#{playlist_id}/tracks?uris=spotify:track:#{track_uri}")
     parse(response)
   end
 

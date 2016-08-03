@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :listening_sessions, except: [:new, :edit]
       resources :suggestions, only: [:index]
+      resources :playlists, only: [:index, :update]
     end
   end
 
