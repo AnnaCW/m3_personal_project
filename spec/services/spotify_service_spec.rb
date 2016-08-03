@@ -1,9 +1,12 @@
 require "rails_helper"
 
+def user
+  create(:user)
+end
+
 describe SpotifyService do
   context "#categories" do
     it "returns a list of categories" do
-      user = create(:user)
       VCR.use_cassette("categories") do
         result = SpotifyService.new(user).get_categories
 
@@ -15,7 +18,6 @@ describe SpotifyService do
 
   context "#category" do
     it "finds a single category by id" do
-      user = create(:user)
       category_id = "toplists"
       VCR.use_cassette("category") do
 
@@ -26,7 +28,6 @@ describe SpotifyService do
     end
 
     it "finds playlists for category" do
-      user = create(:user)
       category_id = "focus"
       VCR.use_cassette("category_playlists") do
 
@@ -41,7 +42,6 @@ describe SpotifyService do
 
   context "#genres" do
     it "gets genre seeds" do
-      user = create(:user)
       VCR.use_cassette("genres") do
         result = SpotifyService.new(user).get_genre_seeds
 
@@ -51,7 +51,6 @@ describe SpotifyService do
     end
 
     it "finds genre suggestions" do
-      user = create(:user)
       VCR.use_cassette("suggestions") do
         result = SpotifyService.new(user).get_suggestions({
                                           "seed_artists" => nil,
@@ -66,10 +65,10 @@ describe SpotifyService do
         expect( result["tracks"].first ).to have_key("uri")
        end
      end
+   end
 
-    context "#tracks"
+    context "#tracks" do
      it "finds track suggestions" do
-       user = create(:user)
        VCR.use_cassette("suggestions-track") do
          result = SpotifyService.new(user).get_suggestions({
                                            "seed_artists" => nil,
@@ -77,9 +76,28 @@ describe SpotifyService do
                                            "seed_genres" => nil
                                              })
 
-         expect( result["tracks"].count ).to eq(6)
+         expect( result["tracks"].count ).to be > 1
       end
+    end
    end
- end
+
+   context "#artists" do
+     it "gets artist" do
+       VCR.use_cassette("artist") do
+         result = SpotifyService.new(user).get_artist("0OdUWJ0sBjDrqHygGUXeCF")
+
+         expect(result["genres"]).to eq(["indie folk", "indie pop"])
+         expect(result["name"]).to eq("Band of Horses")
+       end
+     end
+
+     it "gets artist's top tracks" do
+       VCR.use_cassette("artist-top-tracks") do
+         result = SpotifyService.new(user).get_artist_top_tracks("43ZHCT0cAZBISjO8DG9PnE")
+
+         expect(result["tracks"].first["album"]["name"]).to eq("Blue Hawaii")
+       end
+     end
+   end
 
 end
