@@ -15,4 +15,8 @@ class Playlist
     Playlist.service(user).add_track(playlist_id, track_uri)
   end
 
+  def self.create(user, playlist_name)
+    Playlist.service(user).create_playlist(playlist_name)
+  end
+
 end

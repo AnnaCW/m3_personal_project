@@ -42,6 +42,6 @@ describe SpotifyUserService do
         expect(result["tracks"]["items"].first["name"]).to be_a(String)
       end
     end
-  end
 
+  end
 end

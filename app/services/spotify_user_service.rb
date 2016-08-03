@@ -6,16 +6,16 @@ class SpotifyUserService
     set_header(user)
   end
 
-  def create_playlist(name)
+  def create_playlist(playlist_name)
     response = conn.post do |req|
       req.url "users/#{user.uid}/playlists"
-      req.body = "{\"name\":\"#{name}\", \"public\":true}"
+      req.body = "{\"name\":\"#{playlist_name}\", \"public\":true}"
     end
     parse(response)
   end
 
   def add_track(playlist_id, track_uri)
-    response = conn.post("users/#{user.uid}/playlists/#{playlist_id}/tracks?uris=spotify:track:#{track_uri}")
+    response = conn.post("users/#{user.uid}/playlists/#{playlist_id}/tracks?uris=#{track_uri}")
     parse(response)
   end
 
