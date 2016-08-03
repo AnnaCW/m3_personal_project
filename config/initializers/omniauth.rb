@@ -23,5 +23,5 @@ module OmniAuth
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :spotify, ENV['SPOTIFY_KEY'], ENV['SPOTIFY_SECRET']
+  provider :spotify, ENV['SPOTIFY_KEY'], ENV['SPOTIFY_SECRET'], scope: 'playlist-modify-public'
 end
