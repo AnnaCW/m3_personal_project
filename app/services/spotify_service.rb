@@ -62,6 +62,19 @@ class SpotifyService
     parse(response)
   end
 
+  def get_artist(id)
+    response = cache.fetch("get-artist-#{id}") do
+      conn.get("artists/#{id}")
+    end
+    parse(response)
+  end
+
+  def get_artist_top_tracks(id)
+    response = cache.fetch("get-artist-#{id}-top-tracks") do
+      conn.get("artists/#{id}/top-tracks?country=US")
+    end
+    parse(response)
+  end
 
   private
 

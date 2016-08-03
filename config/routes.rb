@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :suggestions, only: [:index, :show]
   resources :listening_sessions, only: [:index]
+  resources :artists, only: [:show]
 
   get 'items/:type/:id', to: 'items#show', as: 'item'
 

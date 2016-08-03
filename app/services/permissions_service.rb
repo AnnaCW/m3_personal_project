@@ -33,6 +33,7 @@ class PermissionsService
 
       return true if controller == 'api/v1/listening_sessions' && action.in?(%w(create update destroy))
       return true if controller == 'api/v1/suggestions' && action.in?(%w(index))
+      return true if controller == 'artists' && action.in?(%w(show))
       return true if controller == 'categories' && action.in?(%w(index show))
       return true if controller == 'items' && action.in?(%w(show))
       return true if controller == 'listening_sessions' && action.in?(%w(index))
@@ -45,6 +46,7 @@ class PermissionsService
     def other_user_permissions
       return true if controller == 'api/v1/listening_sessions' && action.in?(%w(create update destroy))
       return true if controller == 'api/v1/suggestions' && action.in?(%w(index))
+      return true if controller == 'artists' && action.in?(%w(show))
       return true if controller == 'categories' && action.in?(%w(index show))
       return true if controller == 'items' && action.in?(%w(show))
       return true if controller == 'listening_sessions' && action.in?(%w(index))
