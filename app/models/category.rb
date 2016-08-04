@@ -27,8 +27,12 @@ class Category
 
   def self.playlists(user, category_id)
     raw_playlists = Category.service(user).get_category_playlists(category_id)
-    raw_playlists["playlists"]["items"].map do |raw_playlist|
+    playlists = raw_playlists["playlists"]["items"].map do |raw_playlist|
       OpenStruct.new(raw_playlist)
     end
+    playlists.select do |playlist|
+      playlist.owner["id"] == "spotify"
+    end
   end
+
 end
