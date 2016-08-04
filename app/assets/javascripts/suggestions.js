@@ -14,7 +14,6 @@ $(document).ready(function(){
 
       success: function(suggestions){
         console.table(suggestions);
-        // $(".suggestions").show();
         $(suggestions).each(function(index, suggestion){
           $("#suggested-track-list").append(
             "<tr><td><a href='"+ suggestion["id"] + "'>" + suggestion["name"] + "</a></td>" +

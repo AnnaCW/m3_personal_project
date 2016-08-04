@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :suggestions, only: [:index, :show]
   resources :listening_sessions, only: [:index]
   resources :artists, only: [:show]
+  resources :playlists, only: [:index]
+
 
   get 'items/:type/:id', to: 'items#show', as: 'item'
 
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :listening_sessions, except: [:new, :edit]
       resources :suggestions, only: [:index]
+      resources :playlists, only: [:index, :update, :create]
     end
   end
 

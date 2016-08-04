@@ -1,0 +1,23 @@
+<div class = "container">
+  <div class="row pull-right">
+      <form class="form-inline">
+        <label>New Playlist</label>
+        <input class="form-control" type="text" id="new-playlist-name" placeholder="Playlist Name">
+        <button class="btn btn-success btn-xs" id="create-playlist-button" type="button" name="button">Create</button>
+      </form>
+  </div>
+</div>
+
+<div class="container">
+  <h1>My Playlists</h1>
+
+  <div class="playlists-index-list">
+
+  <% @playlists.each do |playlist| %>
+    <div class="col-md-4" id="<%= playlist.name %>">
+      <h4><%= playlist.name %><h4>
+      <iframe src="https://embed.spotify.com/?uri=<%= playlist.uri %>&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+    </div>
+  <% end %>
+  </div>
+</div>
