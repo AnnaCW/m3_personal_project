@@ -13,5 +13,5 @@ class Track extends React.Component {
         <td><iframe src={"https://embed.spotify.com/?uri=" + this.props.track.table.uri + "&theme=white"} width="250" height="80" frameBorder="0" allowTransparency="true"></iframe></td>
       </tr>
     )
-   }
+  }
 }
