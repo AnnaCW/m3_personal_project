@@ -8,7 +8,6 @@ class AdminListeningSessions extends React.Component {
 
   render()  {
     var listeningSessions = this.state.listeningSessions.map( (listeningSession) => {
-      console.log(listeningSession)
       return <ListeningSession key={listeningSession.id} listeningSession={listeningSession} />
     })
     return (
