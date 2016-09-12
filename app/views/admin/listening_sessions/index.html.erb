@@ -2,6 +2,9 @@
 
 <%= link_to "Export CSV", "/admin/data_export.csv" %>
 
+<%= react_component 'AdminListeningSessions', { listeningSessions: @listening_sessions} %>
+
+
 <table class="table listening-sessions">
   <thead>
     <tr>
@@ -18,7 +21,6 @@
       <td>Communicativeness Before</td>
       <td>Communicativeness After</td>
       <td>Duration</td>
-
     </tr>
   </thead>
   <tbody>
