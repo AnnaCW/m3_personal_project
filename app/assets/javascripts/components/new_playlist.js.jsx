@@ -1,7 +1,8 @@
 class NewPlaylist extends React.Component {
- //  constructor(props) {
- //    super();
- // }
+  constructor(props) {
+    super(props);
+ }
+
 
   handleClick() {
     var userId = $("#user-id").data("target");
@@ -24,7 +25,7 @@ class NewPlaylist extends React.Component {
             <form className='form-inline'>
               <label>New Playlist</label>
               <input ref='name' className='form-control' type='text' id='new-playlist-name' placeholder='Playlist Name'/>
-              <button onClick={this.handleClick} className='btn btn-success btn-xs' id='create-playlist-button' type='button' name='button'>Create</button>
+              <button onClick={this.handleClick.bind(this)} className='btn btn-success btn-xs' id='create-playlist-button' type='button' name='button'>Create</button>
             </form>
           </div>
 
