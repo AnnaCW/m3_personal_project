@@ -20,6 +20,6 @@ class ListeningSession extends React.Component {
         <td>{this.props.listeningSession.communicativeness_after}</td>
         <td>{this.props.listeningSession.duration}</td>
       </tr>
-    )
+    );
   }
 }
