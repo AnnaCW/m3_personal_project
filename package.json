@@ -1,0 +1,24 @@
+{
+  "name": "m3_personal_project",
+  "version": "1.0.0",
+  "description": "#### Anna Weisbrodt - Turing School of Software and Design - Module 3 - Personal Project",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaCW/m3_personal_project.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnnaCW/m3_personal_project/issues"
+  },
+  "homepage": "https://github.com/AnnaCW/m3_personal_project#readme"
+}

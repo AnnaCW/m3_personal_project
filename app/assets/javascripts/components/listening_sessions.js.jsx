@@ -5,12 +5,10 @@ class ListeningSessions extends React.Component {
       listeningSessions: props.listeningSessions
     };
   }
-
+  
   render() {
     var listeningSessions = this.state.listeningSessions.map( (listeningSession) => {
-      console.log(listeningSession);
-
-      // return <ListeningSession key={listeningSession.id} listeningSession={listeningSession} />
+      return <ListeningSession key={listeningSession.id} listeningSession={listeningSession} />
     });
 
     return(
