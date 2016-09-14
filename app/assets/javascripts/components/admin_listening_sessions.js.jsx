@@ -8,7 +8,7 @@ class AdminListeningSessions extends React.Component {
 
   render()  {
     var listeningSessions = this.state.listeningSessions.map( (listeningSession) => {
-      return <ListeningSession key={listeningSession.id} listeningSession={listeningSession} />
+      return <AdminListeningSession key={listeningSession.id} listeningSession={listeningSession} />
     });
     return (
       <table className="table listening-sessions">
