@@ -1,15 +1,5 @@
 <%= react_component 'Item', {item: @item} %>
 
-<div class="col-md-6">
-  <div class="row">
-    <h2><%= @item.name %></h2>
-    <% if @item.type == "track" %>
-      <h3>by <%= link_to @item.artists.first["name"], artist_path(@item.artists.first["id"]) %></h3>
-    <% end %>
-    <iframe src="https://embed.spotify.com/?uri=<%= @item.uri %>&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-  </div>
-</div>
-
 <div class="col-md-6 listening-session">
 
   <div class="row">
