@@ -6,7 +6,7 @@ class AddToPlaylist extends React.Component {
     };
   }
 
-  handleClick() {
+  getPlaylists() {
     var userId = $("#user-id").data("target")
     $("#add-to-playlist").toggle("style");
 
@@ -24,6 +24,29 @@ class AddToPlaylist extends React.Component {
     });
   }
 
+  addtoPlaylist() {
+    var userId = $("#user-id").data("target");
+    var playlistId = $("select :selected[data-target]").data("target");
+    var trackUri = $("#item-uri").data("target");
+
+    $.ajax({
+      url: "/api/v1/playlists/" + playlistId + ".json",
+      method: "PATCH",
+      data: {user_id: userId, playlist_id: playlistId, track_uri: trackUri },
+      success: () => {
+        $("#add-to-playlist").hide();
+        $("#playlists-listing").hide();
+        $("#add-button").hide();
+        $("#cancel-button").hide();
+        $("#added-message").slideDown( () => {
+          setTimeout( () => {
+          $("#added-message").slideUp();
+        }, 3000);
+      });
+     }
+    });
+  }
+
   render() {
     var playlists = this.state.playlists.map( (playlist) => {
       return <PlaylistForAdd key={playlist.id} playlist={playlist} />
@@ -31,7 +54,7 @@ class AddToPlaylist extends React.Component {
     return(
       <div>
         <div className="row">
-          <button onClick={this.handleClick.bind(this)} className="btn btn-success" id="add-to-playlist" type="button" name="button">Add to Playlist</button>
+          <button onClick={this.getPlaylists.bind(this)} className="btn btn-success" id="add-to-playlist" type="button" name="button">Add to Playlist</button>
         </div>
 
         <div id="playlists-listing" style={{display: 'none'}}>
@@ -39,7 +62,7 @@ class AddToPlaylist extends React.Component {
           <select className='form-control-inline' id='playlist-select'>{playlists}</select>
         </div>
 
-        <button className="btn btn-success btn-xs" id="add-button" style={{display: 'none'}} type="button" name="button">Add</button>
+        <button onClick={this.addtoPlaylist.bind(this)} className="btn btn-success btn-xs" id="add-button" style={{display: 'none'}} type="button" name="button">Add</button>
         <button className="btn btn-danger btn-xs" id="cancel-button" style={{display: 'none'}} type="button" name="button">Cancel</button>
         <div id="added-message" style={{display: 'none'}}>Added!</div>
       </div>
