@@ -118,6 +118,8 @@
 
 <% if @item.type == "track"%>
 
+<%= react_component 'TrackSuggestions', {item: @item, user: @user} %>
+
   <div class="row">
     <button class='btn btn-primary' id='track-suggestions'>More Like This</button>
   </div>
