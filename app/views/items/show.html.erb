@@ -1,19 +1,10 @@
-<div class="col-md-6">
-  <div class="row">
-    <h2><%= @item.name %></h2>
-    <% if @item.type == "track" %>
-      <h3>by <%= link_to @item.artists.first["name"], artist_path(@item.artists.first["id"]) %></h3>
-    <% end %>
-    <iframe src="https://embed.spotify.com/?uri=<%= @item.uri %>&theme=white" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-  </div>
-</div>
+<%= react_component 'Item', {item: @item} %>
 
 <div class="col-md-6 listening-session">
 
   <div class="row">
     <button class="btn btn-warning" id="create-listen" type="button" name="button">Open Listening Session</button>
   </div>
-
 
   <form class="session">
     <div id="session-box" style="display:none;">
@@ -116,34 +107,9 @@
 
 <% if @item.type == "track"%>
 
-  <div class="row">
-    <button class='btn btn-primary' id='track-suggestions'>More Like This</button>
-  </div>
-    <div id="item-id" style="display:none;" data-target='<%= @item.id %>'></div>
-    <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
-    <div id="item-uri" style="display:none;" data-target='<%= @item.uri %>'></div>
+  <%= react_component 'TrackSuggestions', {item: @item, user: @user} %>
 
-    <table class="table suggestions" style="display:none;">
-      <thead>
-        <tr>
-          <td>Track</td>
-          <td>Artist</td>
-          <td>Album</td>
-        </tr>
-      </thead>
-      <tbody id="suggested-track-list">
-        <!-- API results -->
-      </tbody>
-    </table>
-
-  <div class="row">
-    <button class="btn btn-success" id="add-to-playlist" type="button" name="button">Add to Playlist</button>
-  </div>
-
-  <div id="playlists-listing"></div>
-  <button class="btn btn-success btn-xs" id="add-button" style="display:none;" type="button" name="button">Add</button>
-  <button class="btn btn-danger btn-xs" id="cancel-button" style="display:none;" type="button" name="button">Cancel</button>
-  <div id="added-message" style="display:none;">Added!</div>
+  <%= react_component 'AddToPlaylist' %>
 
 <% end %>
 
