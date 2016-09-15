@@ -5,7 +5,7 @@ class ItemArtist extends React.Component {
 
   render() {
     return(
-      <h3>by{this.props.artist.name}</h3>
+      <h3>by {this.props.artist.name}</h3>
       // add link to artist show
     )
   }

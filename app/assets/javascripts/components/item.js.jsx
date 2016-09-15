@@ -18,6 +18,7 @@ class Item extends React.Component {
           <div className='row'>
             <h2>{item.name}</h2>
               <div>{artists}</div>
+              <iframe src={"https://embed.spotify.com/?uri=" + item.uri + "&theme=white"} width="300" height="380" frameBorder="0" allowTransparency="true"></iframe>
           </div>
         </div>
         )
@@ -28,6 +29,7 @@ class Item extends React.Component {
           <div className='col-md-6'>
             <div className='row'>
               <h2>{item.name}</h2>
+              <iframe src={"https://embed.spotify.com/?uri=" + item.uri + "&theme=white"} width="300" height="380" frameBorder="0" allowTransparency="true"></iframe>
             </div>
           </div>
         )
