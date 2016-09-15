@@ -7,19 +7,16 @@ class AddToPlaylist extends React.Component {
   }
 
   getPlaylists() {
-    var userId = $("#user-id").data("target")
+    var userId = $("#user-id").data("target");
     $("#add-to-playlist").toggle("style");
 
     $.ajax({
       url: "/api/v1/playlists.json",
       method: "GET",
-      dataType: "JSON",
       data: {user_id: userId },
       success: (response) => {
         this.setState({ playlists: response });
         $("#playlists-listing").show();
-        $("#add-button").show();
-        $("#cancel-button").show();
       }
     });
   }
@@ -36,8 +33,6 @@ class AddToPlaylist extends React.Component {
       success: () => {
         $("#add-to-playlist").hide();
         $("#playlists-listing").hide();
-        $("#add-button").hide();
-        $("#cancel-button").hide();
         $("#added-message").slideDown( () => {
           setTimeout( () => {
           $("#added-message").slideUp();
@@ -50,8 +45,6 @@ class AddToPlaylist extends React.Component {
   cancelClick() {
     $("#add-to-playlist").show();
     $("#playlists-listing").hide();
-    $("#add-button").hide();
-    $("#cancel-button").hide();
   }
 
   render() {
@@ -67,12 +60,12 @@ class AddToPlaylist extends React.Component {
         <div id="playlists-listing" style={{display: 'none'}}>
           <label>Select A Playlist</label>
           <select className='form-control-inline' id='playlist-select'>{playlists}</select>
+            <button onClick={this.addtoPlaylist.bind(this)} className="btn btn-success btn-xs" id="add-button" type="button" name="button">Add</button>
+            <button onClick={this.cancelClick.bind(this)} className="btn btn-danger btn-xs" id="cancel-button" type="button" name="button">Cancel</button>
         </div>
 
-        <button onClick={this.addtoPlaylist.bind(this)} className="btn btn-success btn-xs" id="add-button" style={{display: 'none'}} type="button" name="button">Add</button>
-        <button onClick={this.cancelClick.bind(this)} className="btn btn-danger btn-xs" id="cancel-button" style={{display: 'none'}} type="button" name="button">Cancel</button>
         <div id="added-message" style={{display: 'none'}}>Added!</div>
       </div>
-    )
+    );
   }
 }
