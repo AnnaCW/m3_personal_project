@@ -121,26 +121,6 @@
 <%= react_component 'TrackSuggestions', {item: @item, user: @user} %>
 
   <div class="row">
-    <button class='btn btn-primary' id='track-suggestions'>More Like This</button>
-  </div>
-    <div id="item-id" style="display:none;" data-target='<%= @item.id %>'></div>
-    <div id="user-id" style="display:none;" data-target='<%= @user.id %>'></div>
-    <div id="item-uri" style="display:none;" data-target='<%= @item.uri %>'></div>
-
-    <table class="table suggestions" style="display:none;">
-      <thead>
-        <tr>
-          <td>Track</td>
-          <td>Artist</td>
-          <td>Album</td>
-        </tr>
-      </thead>
-      <tbody id="suggested-track-list">
-        <!-- API results -->
-      </tbody>
-    </table>
-
-  <div class="row">
     <button class="btn btn-success" id="add-to-playlist" type="button" name="button">Add to Playlist</button>
   </div>
 
