@@ -54,12 +54,12 @@ $(document).ready(function(){
 //     });
 //   });
 
-  $("#cancel-button").on('click', function(){
-    $("#add-to-playlist").hide();
-    $("#playlists-listing").hide();
-    $("#add-button").hide();
-    $("#cancel-button").hide();
-   });
+  // $("#cancel-button").on('click', function(){
+  //   $("#add-to-playlist").hide();
+  //   $("#playlists-listing").hide();
+  //   $("#add-button").hide();
+  //   $("#cancel-button").hide();
+  //  });
 
    $("#create-playlist-button").on('click', function(){
      var userId = $("#user-id").data("target")

@@ -47,6 +47,13 @@ class AddToPlaylist extends React.Component {
     });
   }
 
+  cancelClick() {
+    $("#add-to-playlist").show();
+    $("#playlists-listing").hide();
+    $("#add-button").hide();
+    $("#cancel-button").hide();
+  }
+
   render() {
     var playlists = this.state.playlists.map( (playlist) => {
       return <PlaylistForAdd key={playlist.id} playlist={playlist} />
@@ -63,7 +70,7 @@ class AddToPlaylist extends React.Component {
         </div>
 
         <button onClick={this.addtoPlaylist.bind(this)} className="btn btn-success btn-xs" id="add-button" style={{display: 'none'}} type="button" name="button">Add</button>
-        <button className="btn btn-danger btn-xs" id="cancel-button" style={{display: 'none'}} type="button" name="button">Cancel</button>
+        <button onClick={this.cancelClick.bind(this)} className="btn btn-danger btn-xs" id="cancel-button" style={{display: 'none'}} type="button" name="button">Cancel</button>
         <div id="added-message" style={{display: 'none'}}>Added!</div>
       </div>
     )
