@@ -8,9 +8,12 @@ class Item extends React.Component {
 
   render() {
     var item = this.state.item.table;
-    var artists = item.artists.map ((artist) => {
-      return <ItemArtist key={artist.id} artist={artist} />
-    });
+    
+    if (item.artists) {
+      var artists = item.artists.map ((artist) => {
+        return <ItemArtist key={artist.id} artist={artist} />
+      });
+    }
 
     if (item.type === "track") {
       return(
