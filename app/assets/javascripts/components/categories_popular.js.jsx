@@ -7,7 +7,6 @@ class CategoriesPopular extends React.Component {
   }
 
   render() {
-    console.log(this.state.popularCategories)
     var popularCategories = this.state.popularCategories.map( (category) => {
       return <Category key={category.table.id} category={category} />
     });
