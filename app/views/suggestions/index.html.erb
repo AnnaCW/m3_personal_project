@@ -10,18 +10,10 @@
     <%= react_component 'SuggestionsGenre', {genre: @presenter.genre, genreSuggestions: @presenter.suggestions_from_genre} %>
   <% end %>
 
-    <div class="suggest decade row">
-      <h3>Search for Playlists by Decade</h3>
-      <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
-            <div class="form-group">
-                <%= select_tag :decade, options_for_select(@presenter.decades), :prompt => "Select Decade", class: "large-search" %>
-                <%= submit_tag "GET!", class: "btn btn-success" %>
-            </div>
-      <% end %>
-    </div>
+<%= react_component 'SuggestionsSearchDecade', {decades: @presenter.decades} %>
 
-    <% if @presenter.suggestions_from_decade %>
-      <%= react_component 'SuggestionsDecade', {decade: @presenter.decade, decadeSuggestions: @presenter.suggestions_from_decade} %>
-    <% end %>
+  <% if @presenter.suggestions_from_decade %>
+    <%= react_component 'SuggestionsDecade', {decade: @presenter.decade, decadeSuggestions: @presenter.suggestions_from_decade} %>
+  <% end %>
 
 </div>
