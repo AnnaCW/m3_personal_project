@@ -1,19 +1,18 @@
 class Playlists extends React.Component {
   constructor(props) {
     super();
+    var formattedPlaylists = props.playlists.map( (playlist) => {
+      return playlist.table
+    });
     this.state = {
-      playlists: props.playlists
+      playlists: formattedPlaylists
     };
   }
 
   handleSubmit(playlist) {
-    $("input#new-playlist-name").val("");
-    $(".playlists-index-list").append(
-      "<div class='col-md-4' id=" + playlist.name + ">" +
-        "<h4>" + playlist.name + "<h4>" +
-        "<iframe src='https://embed.spotify.com/?uri=" + playlist.uri + "&theme=white' width='300' height='380' frameborder='0' allowtransparency='true'></iframe>" +
-      "</div>"
-    )
+    var newState = this.state.playlists.concat(playlist);
+    this.setState( {playlists: newState} );
+     $("input#new-playlist-name").val("");
   }
 
   render () {
@@ -22,7 +21,6 @@ class Playlists extends React.Component {
         <NewPlaylist handleSubmit={this.handleSubmit.bind(this)}/>
         <AllPlaylists playlists={this.state.playlists} />
       </div>
-
-    )
+    );
   }
 }
