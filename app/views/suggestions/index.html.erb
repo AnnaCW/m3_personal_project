@@ -4,15 +4,7 @@
 
 <div class="col-md-12">
 
-  <div class="suggest genre row">
-    <h3>Top Tracks by Genre</h3>
-    <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
-        <div class="form-group">
-          <%= select_tag :genre, options_for_select(@presenter.genres), :prompt => "Select Genre", class: "large-search" %>
-          <%= submit_tag "GET!", class: "btn btn-success" %>
-        </div>
-    <% end %>
-  </div>
+<%= react_component 'SuggestionsSearchGenre', {genres: @presenter.genres} %>
 
   <% if @presenter.suggestions_from_genre %>
     <%= react_component 'SuggestionsGenre', {genre: @presenter.genre, genreSuggestions: @presenter.suggestions_from_genre} %>
