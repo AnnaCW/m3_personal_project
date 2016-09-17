@@ -18,7 +18,6 @@
     <%= react_component 'SuggestionsGenre', {genre: @presenter.genre, genreSuggestions: @presenter.suggestions_from_genre} %>
   <% end %>
 
-
     <div class="suggest decade row">
       <h3>Search for Playlists by Decade</h3>
       <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
@@ -30,27 +29,7 @@
     </div>
 
     <% if @presenter.suggestions_from_decade %>
-    <div class="decade-suggestions-header">
-      <h3> <%= @presenter.decade %> Playlists </h3>
-    </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <td>Playlist</td>
-            <td>Number of Tracks</td>
-          </tr>
-        </thead>
-        <tbody>
-        <% @presenter.suggestions_from_decade.each do |playlist| %>
-        <tr>
-          <td><%= link_to playlist.name, item_path(playlist.type.pluralize, playlist.id, playlist.owner["id"] ) %></td>
-          <td><%= playlist.tracks["total"] %></td>
-        </tr>
-        <% end %>
-      </tbody>
-
-      </table>
+      <%= react_component 'SuggestionsDecade', {decade: @presenter.decade, decadeSuggestions: @presenter.suggestions_from_decade} %>
     <% end %>
-
 
 </div>
