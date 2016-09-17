@@ -3,77 +3,17 @@
 </div>
 
 <div class="col-md-12">
-  <div class="suggest genre row">
-    <h3>Top Tracks by Genre</h3>
 
-    <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
-              <div class="form-group">
-                <%= select_tag :genre, options_for_select(@presenter.genres), :prompt => "Select Genre", class: "large-search" %>
-                <%= submit_tag "GET!", class: "btn btn-success" %>
-              </div>
-            <% end %>
-  </div>
+<%= react_component 'SuggestionsSearchGenre', {genres: @presenter.genres} %>
 
-    <% if @presenter.suggestions_from_genre %>
-    <div class="genre-suggestions-header">
-      <h3>Top <%= @presenter.genre %> Selections </h3>
-    </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <td>Track</td>
-            <td>Artist</td>
-            <td>Album</td>
-            <td>Play It</td>
-          </tr>
-        </thead>
-        <tbody>
-        <% @presenter.suggestions_from_genre.each do |track| %>
-        <tr>
-          <td><%= link_to track.name, item_path(track.type.pluralize, track.id ) %></td>
-          <td><%= link_to track.artists.first["name"], artist_path(track.artists.first["id"]) %></td>
-          <td><%= track.album["name"] %></td>
-          <td><iframe src="https://embed.spotify.com/?uri=<%= track.uri %>&theme=white" width="250" height="80" frameborder="0" allowtransparency="true"></iframe></td>
-        </tr>
-        <% end %>
-      </tbody>
+  <% if @presenter.suggestions_from_genre %>
+    <%= react_component 'SuggestionsGenre', {genre: @presenter.genre, genreSuggestions: @presenter.suggestions_from_genre} %>
+  <% end %>
 
-      </table>
-    <% end %>
+<%= react_component 'SuggestionsSearchDecade', {decades: @presenter.decades} %>
 
-
-    <div class="suggest decade row">
-      <h3>Search for Playlists by Decade</h3>
-      <%= form_tag :suggestions, method: :get, class: "form-inline" do %>
-            <div class="form-group">
-                <%= select_tag :decade, options_for_select(@presenter.decades), :prompt => "Select Decade", class: "large-search" %>
-                <%= submit_tag "GET!", class: "btn btn-success" %>
-            </div>
-      <% end %>
-    </div>
-
-    <% if @presenter.suggestions_from_decade %>
-    <div class="decade-suggestions-header">
-      <h3> <%= @presenter.decade %> Playlists </h3>
-    </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <td>Playlist</td>
-            <td>Number of Tracks</td>
-          </tr>
-        </thead>
-        <tbody>
-        <% @presenter.suggestions_from_decade.each do |playlist| %>
-        <tr>
-          <td><%= link_to playlist.name, item_path(playlist.type.pluralize, playlist.id, playlist.owner["id"] ) %></td>
-          <td><%= playlist.tracks["total"] %></td>
-        </tr>
-        <% end %>
-      </tbody>
-
-      </table>
-    <% end %>
-
+  <% if @presenter.suggestions_from_decade %>
+    <%= react_component 'SuggestionsDecade', {decade: @presenter.decade, decadeSuggestions: @presenter.suggestions_from_decade} %>
+  <% end %>
 
 </div>

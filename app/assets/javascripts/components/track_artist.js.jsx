@@ -5,7 +5,7 @@ class TrackArtist extends React.Component {
 
   render() {
     return(
-      <p>{this.props.artist.name}</p>
+      <p><a href={"/artists/" + this.props.artist.id + ""}>{this.props.artist.name}</a></p>
     )
   }
 }
