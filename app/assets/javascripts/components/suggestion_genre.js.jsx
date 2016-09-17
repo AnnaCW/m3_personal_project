@@ -1,4 +1,4 @@
-class GenreSuggestion extends React.Component {
+class SuggestionGenre extends React.Component {
   constructor(props) {
     super(props);
   }

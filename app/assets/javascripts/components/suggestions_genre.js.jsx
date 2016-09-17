@@ -9,7 +9,7 @@ class SuggestionsGenre extends React.Component {
 
   render() {
     var genreSuggestions = this.state.genreSuggestions.map ( (suggestion) => {
-      return <GenreSuggestion key={suggestion.table.id} suggestion={suggestion} />
+      return <SuggestionGenre key={suggestion.table.id} suggestion={suggestion} />
     });
     return(
       <div>
