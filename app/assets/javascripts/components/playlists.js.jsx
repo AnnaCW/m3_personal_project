@@ -1,8 +1,8 @@
 class Playlists extends React.Component {
   constructor(props) {
     super();
-    var formattedPlaylists = props.playlists.map( (playlist) => {
-      return playlist.table
+    var formattedPlaylists = props.playlists.map((playlist) => {
+      return playlist.table;
     });
     this.state = {
       playlists: formattedPlaylists
@@ -11,11 +11,11 @@ class Playlists extends React.Component {
 
   handleSubmit(playlist) {
     var newState = this.state.playlists.concat(playlist);
-    this.setState( {playlists: newState} );
-     $("input#new-playlist-name").val("");
+    this.setState({playlists: newState});
+    $("input#new-playlist-name").val("");
   }
 
-  render () {
+  render() {
     return (
       <div>
         <NewPlaylist handleSubmit={this.handleSubmit.bind(this)}/>

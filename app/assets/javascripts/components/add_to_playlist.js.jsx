@@ -13,9 +13,9 @@ class AddToPlaylist extends React.Component {
     $.ajax({
       url: "/api/v1/playlists.json",
       method: "GET",
-      data: {user_id: userId },
+      data: {user_id: userId},
       success: (response) => {
-        this.setState({ playlists: response });
+        this.setState({playlists: response});
         $("#playlists-listing").show();
       }
     });
@@ -29,12 +29,12 @@ class AddToPlaylist extends React.Component {
     $.ajax({
       url: "/api/v1/playlists/" + playlistId + ".json",
       method: "PATCH",
-      data: {user_id: userId, playlist_id: playlistId, track_uri: trackUri },
+      data: {user_id: userId, playlist_id: playlistId, track_uri: trackUri},
       success: () => {
         $("#add-to-playlist").hide();
         $("#playlists-listing").hide();
-        $("#added-message").slideDown( () => {
-          setTimeout( () => {
+        $("#added-message").slideDown(() => {
+          setTimeout(() => {
           $("#added-message").slideUp();
         }, 3000);
       });
@@ -48,10 +48,10 @@ class AddToPlaylist extends React.Component {
   }
 
   render() {
-    var playlists = this.state.playlists.map( (playlist) => {
-      return <PlaylistForAdd key={playlist.id} playlist={playlist} />
+    var playlists = this.state.playlists.map((playlist) => {
+      return <PlaylistForAdd key={playlist.id} playlist={playlist} />;
     });
-    return(
+    return (
       <div>
         <div className="row">
           <button onClick={this.getPlaylists.bind(this)} className="btn btn-success" id="add-to-playlist" type="button" name="button">Add to Playlist</button>
